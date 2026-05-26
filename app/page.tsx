@@ -338,22 +338,7 @@ export default function Home() {
                 We can&apos;t wait to share this special moment with you. Your
                 presence will make our day even more meaningful.
               </p>
-              <h3 className="closing-names reanimate fade delay-3">HANSEN &amp; KEZIA</h3>
-              <p className="section-copy reanimate fade delay-4">
-                Invitation by énvelope
-              </p>
-              <div className="footer-links reanimate fade delay-5">
-                <a href="https://wa.me/6282211225002" target="_blank" rel="noreferrer">
-                  0822-1122-5002
-                </a>
-                <a href="https://instagram.com/envelope.id" target="_blank" rel="noreferrer">
-                  envelope.id
-                </a>
-                <a href="https://envelope.id" target="_blank" rel="noreferrer">
-                  envelope.id
-                </a>
-              </div>
-              <p className="copyright">© 2026 énvelope, All rights reserved.</p>
+              <h3 className="closing-names reanimate fade delay-3">Daniel &amp; Listi</h3>
             </div>
           </section>
         </main>
@@ -368,11 +353,11 @@ export default function Home() {
         >
           <p className="cover-kicker">THE WEDDING OF</p>
           <div className="cover-title-block">
-            <span className="cover-ghost">H K</span>
-            <h1>Hansen</h1>
-            <h1>Kezia</h1>
+            <span className="cover-ghost">D L</span>
+            <h1>Daniel</h1>
+            <h1>Listi</h1>
           </div>
-          <p className="cover-date">SATURDAY, 11 / 04 / 2026</p>
+          <p className="cover-date">SATURDAY, 30 / 01 / 2027</p>
           <p className="cover-guest">Dear, Guest</p>
           <button
             type="button"

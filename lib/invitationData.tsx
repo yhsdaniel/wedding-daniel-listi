@@ -41,25 +41,25 @@ export const events: EventCard[] = [
   {
     title: "HOLY MATRIMONY",
     day: "SATURDAY",
-    month: "APR",
-    date: "18",
-    year: "2026",
-    time: "08.00 - 10.00 WIB",
-    venue: "Balai Sartika Convention Hall",
-    address: "Jl. Suryalaya Indah No. 1-3 Buah Batu, Cijagra, Bandung",
-    mapsUrl: "https://maps.google.com/?q=Balai+Sartika+Convention+Hall+Bandung",
+    month: "JAN",
+    date: "30",
+    year: "2027",
+    time: "12.00 - 14.00 WIB",
+    venue: "Maria Bunda Karmel Church",
+    address: "Jl. Karmel Raya No.2, RT.9/RW.4, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530",
+    mapsUrl: "https://maps.google.com/?q=Maria+Bunda+Karmel+Church",
   },
-  {
-    title: "RECEPTION",
-    day: "SATURDAY",
-    month: "APR",
-    date: "18",
-    year: "2026",
-    time: "11.00 - 13.00 WIB",
-    venue: "Balai Sartika Convention Hall",
-    address: "Jl. Suryalaya Indah No. 1-3 Buah Batu, Cijagra, Bandung",
-    mapsUrl: "https://maps.google.com/?q=Balai+Sartika+Convention+Hall+Bandung",
-  },
+  // {
+  //   title: "RECEPTION",
+  //   day: "SATURDAY",
+  //   month: "APR",
+  //   date: "18",
+  //   year: "2026",
+  //   time: "11.00 - 13.00 WIB",
+  //   venue: "Balai Sartika Convention Hall",
+  //   address: "Jl. Suryalaya Indah No. 1-3 Buah Batu, Cijagra, Bandung",
+  //   mapsUrl: "https://maps.google.com/?q=Balai+Sartika+Convention+Hall+Bandung",
+  // },
 ];
 
 export const topGallery: ImageGalleryItem[] = [
@@ -149,33 +149,33 @@ export const weddingGiftCards = [
   {
     kind: "bank",
     logo: bcaLogo,
-    title: "Hansen Yap",
-    detail: "123456789",
-    copy: "123456789",
+    title: "Daniel Kristiawan",
+    detail: "6320435089",
+    copy: "6320435089",
   },
   {
     kind: "bank",
-    logo: mandiriLogo,
-    title: "Kezia Aurelia",
-    detail: "987654321",
-    copy: "987654321",
+    logo: bcaLogo,
+    title: "Listiany Sukmawaty",
+    detail: "6510350535",
+    copy: "6510350535",
   },
-  {
-    kind: "gift",
-    logo: giftIcon,
-    title: "Send Gift",
-    detail:
-      "Evan (08123456789)\nJl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
-    copy:
-      "Evan (08123456789), Jl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
-  },
-  {
-    kind: "gift",
-    logo: giftIcon,
-    title: "Gift Registry",
-    detail: "Open the registry through the original énvelope workflow.",
-    copy: "https://envelope.id",
-  },
+  // {
+  //   kind: "gift",
+  //   logo: giftIcon,
+  //   title: "Send Gift",
+  //   detail:
+  //     "Evan (08123456789)\nJl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
+  //   copy:
+  //     "Evan (08123456789), Jl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
+  // },
+  // {
+  //   kind: "gift",
+  //   logo: giftIcon,
+  //   title: "Gift Registry",
+  //   detail: "Open the registry through the original énvelope workflow.",
+  //   copy: "https://envelope.id",
+  // },
 ];
 
 export const calendarUrl =

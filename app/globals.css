@@ -1,5 +1,4 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/preflight";
 @tailwind utilities;
 
 @font-face {
@@ -983,7 +982,7 @@ img {
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255);
   flex: 0 0 auto;
 }
 
@@ -1140,7 +1139,7 @@ img {
 .left,
 .right,
 .up {
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .fade {
@@ -1168,7 +1167,7 @@ img {
     transform 1.7s ease;
 }
 
-.reanimate.in-view {
+.reanimate {
   /* opacity: 1; */
   transform: translate(0, 0);
 }
@@ -1270,6 +1269,7 @@ img {
     font-family: "Belgan Aesthetic", "Times New Roman", serif;
     font-size: 2rem;
     line-height: 1;
+    opacity: 0.6;
   }
 
   .hero-menu-link.is-active {

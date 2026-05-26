@@ -17,16 +17,16 @@ export type EventCard = {
 
 export type GalleryItem =
   | {
-      type: "image";
-      thumb: string;
-      full: string;
-      alt: string;
-    }
+    type: "image";
+    thumb: string;
+    full: string;
+    alt: string;
+  }
   | {
-      type: "video";
-      videoId: string;
-      alt: string;
-    };
+    type: "video";
+    videoId: string;
+    alt: string;
+  };
 
 export type ImageGalleryItem = Extract<GalleryItem, { type: "image" }>;
 

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type GiftCard = {
   kind: string;
   logo: string;
@@ -33,33 +35,22 @@ export default function GiftSection({
           }}
         />
         <p className="card-eyebrow reanimate fade delay-3">WEDDING GIFT</p>
-        <p className="section-copy reanimate up delay-4">
+        <h2 className="section-copy reanimate up delay-4 large">
           The greatest gift is having you with us. If you&apos;d like to give a token
           of love, we would be truly grateful.
-        </p>
+        </h2>
 
-        <div className={`gift-panel ${giftOpen ? "is-open" : ""}`}>
-          <div className="gift-panel-head">
-            <button
-              type="button"
-              className={`text-button ${giftOpen ? "is-visible" : ""}`}
-              onClick={() => toggleGiftOpen()}
-            >
-              CLOSE
-            </button>
-            <button type="button" className="pill-button" onClick={toggleGiftOpen}>
-              SEND GIFT
-            </button>
-          </div>
-
+        <div className={`gift-panel is-open`}>
           <div className="gift-grid">
             {cards.map((card) => (
               <article key={card.title} className="gift-option">
                 <div className="gift-icon-wrap">
-                  <img
+                  <Image
                     src={card.logo}
                     alt={card.kind === "bank" ? "Bank logo" : "Gift icon"}
                     className={card.kind === "bank" ? "bank-logo" : "gift-logo"}
+                    width={40}
+                    height={40}
                   />
                 </div>
                 <div className="gift-body">
@@ -71,7 +62,12 @@ export default function GiftSection({
                   className="icon-button"
                   onClick={() => onCopy(card.copy)}
                 >
-                  <img src={copyIcon} alt="Copy" />
+                  <Image
+                    src={copyIcon}
+                    alt="Copy"
+                    width={40}
+                    height={40}
+                  />
                 </button>
               </article>
             ))}

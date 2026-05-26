@@ -1,4 +1,5 @@
 import { GalleryItem, ImageGalleryItem } from "@/app/types";
+import Image from "next/image";
 
 type GallerySectionProps = {
   topGallery: ImageGalleryItem[];
@@ -53,13 +54,20 @@ export default function GallerySection({
                 className={`gallery-item ${getGridSpan(index)} ${isVideo ? "video-item" : ""}`}
                 onClick={() => onOpenLightbox(item)}
               >
-                <img
+                <Image
                   src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
                   alt={item.alt}
+                  fill
+                  style={{ objectFit: "cover" }}
                 />
                 {isVideo ? (
                   <span className="video-play">
-                    <img src={playIcon} alt="Play video" />
+                    <Image 
+                      src={playIcon} 
+                      alt="Play video" 
+                      fill
+                      style={{ objectFit: "contain" }}
+                    />
                   </span>
                 ) : null}
               </button>

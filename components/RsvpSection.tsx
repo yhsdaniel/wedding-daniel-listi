@@ -76,18 +76,20 @@ export default function RsvpSection({
             </select>
           </label> */}
 
-          <div className="field">
-            <span>NUMBER OF GUESTS</span>
-            <div className="guest-stepper">
-              <button type="button" onClick={() => onGuestCountChange(-1)}>
-                -
-              </button>
-              <input value={guestCount} readOnly />
-              <button type="button" onClick={() => onGuestCountChange(1)}>
-                +
-              </button>
+          {'Attend' === attendance && (
+            <div className="field">
+              <span>NUMBER OF GUESTS</span>
+              <div className="guest-stepper">
+                <button type="button" onClick={() => onGuestCountChange(-1)}>
+                  -
+                </button>
+                <input value={guestCount} readOnly />
+                <button type="button" onClick={() => onGuestCountChange(1)}>
+                  +
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <label className="field">
             <span>WISHES</span>
@@ -103,7 +105,7 @@ export default function RsvpSection({
             SUBMIT
           </button>
         </form>
-        {submitMessage ? <p className="form-message">{submitMessage}</p> : null}
+        {/* {submitMessage ? <p className="form-message">{submitMessage}</p> : null} */}
       </div>
 
       <div className="content-card wishes-card">
@@ -113,7 +115,7 @@ export default function RsvpSection({
         </div>
 
         {wishes.length ? (
-          <div className="wishes-list">
+          <div className="wishes-list max-h-[500px] overflow-y-auto">
             {wishes.map((wish, index) => (
               <article key={`${wish.name}-${index}`} className="wish-item">
                 <div>

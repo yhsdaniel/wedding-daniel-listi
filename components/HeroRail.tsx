@@ -28,9 +28,9 @@ export default function HeroRail({
         >
           <p className="hero-kicker reanimate fade">THE WEDDING OF</p>
           <div className="hero-title-wrap">
-            <span className="hero-ghost reanimate fade delay-2">H K</span>
-            <h1 className="hero-title reanimate fade delay-3">Hansen</h1>
-            <h1 className="hero-title reanimate fade delay-4">Kezia</h1>
+            <span className="hero-ghost reanimate fade delay-2">D L</span>
+            <h1 className="hero-title reanimate fade delay-3">Daniel</h1>
+            <h1 className="hero-title reanimate fade delay-4">Listi</h1>
           </div>
           <nav className="hero-menu" aria-label="Invitation sections">
             {menuItems.map((item, index) => (
@@ -39,7 +39,7 @@ export default function HeroRail({
                 type="button"
                 className={`hero-menu-link reanimate left ${
                   activeSection === item.id ? "is-active" : ""
-                } delay-${Math.min(index + 1, 6)}`}
+                } delay-1`}
                 onClick={() => onNavigate(item.id)}
               >
                 {item.label}
