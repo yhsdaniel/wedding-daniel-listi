@@ -43,41 +43,69 @@ export default function GallerySection({
           <p className="gallery-helper muted">All images displayed in a modern grid</p>
         </div>
 
-        <div className="gallery-grid reanimate fade delay-3">
-          {galleryItems.map((item, index) => {
-            const isVideo = item.type === "video";
-            const key = isVideo ? `${item.videoId}-${index}` : item.full;
-            return (
-              <button
-                key={key}
-                type="button"
-                className={`gallery-item ${getGridSpan(index)} ${isVideo ? "video-item" : ""}`}
-                onClick={() => onOpenLightbox(item)}
-              >
-                <Image
-                  src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
-                  alt={item.alt}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-                {isVideo ? (
-                  <span className="video-play">
-                    <Image 
-                      src={playIcon} 
-                      alt="Play video" 
-                      fill
-                      style={{ objectFit: "contain" }}
-                    />
-                  </span>
-                ) : null}
-              </button>
-            );
-          })}
+        {/* === 2 BARIS SCROLL INDEPENDEN === */}
+        <div className="gallery-rows-wrapper reanimate fade delay-3">
+
+          {/* BARIS 1 */}
+          <div className="gallery-row">
+            {galleryItems.slice(0, Math.ceil(galleryItems.length / 2)).map((item, index) => {
+              const isVideo = item.type === "video";
+              const key = isVideo ? `${item.videoId}-row1-${index}` : `${item.full}-row1-${index}`;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  className={`gallery-pill-item ${isVideo ? "video-item" : ""}`}
+                  onClick={() => onOpenLightbox(item)}
+                >
+                  <Image
+                    src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
+                    alt={item.alt}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                  {isVideo && (
+                    <span className="video-play">
+                      <Image src={playIcon} alt="Play video" fill style={{ objectFit: "contain" }} />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* BARIS 2 */}
+          <div className="gallery-row">
+            {galleryItems.slice(Math.ceil(galleryItems.length / 2)).map((item, index) => {
+              const isVideo = item.type === "video";
+              const key = isVideo ? `${item.videoId}-row2-${index}` : `${item.full}-row2-${index}`;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  className={`gallery-pill-item ${isVideo ? "video-item" : ""}`}
+                  onClick={() => onOpenLightbox(item)}
+                >
+                  <Image
+                    src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
+                    alt={item.alt}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                  {isVideo && (
+                    <span className="video-play">
+                      <Image src={playIcon} alt="Play video" fill style={{ objectFit: "contain" }} />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
         </div>
 
         <p className="quote reanimate up delay-5">
-          &quot;To love and be loved is to feel the sun from both sides.&quot; - David
-          Viscott
+          &quot;To love and be loved is to feel the sun from both sides.&quot; - David Viscott
         </p>
       </div>
     </section>

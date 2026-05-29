@@ -13,6 +13,10 @@ export const coverImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
 export const storyImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_ovXEMCwF-1024x683.jpg";
+export const groomImage =
+  "https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg";
+export const brideImage =
+  "https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg";
 export const giftImage =
   "https://wp.envelope.id/wp-content/uploads/2025/11/inv_787_mqiDhs4a.jpg";
 export const backgroundVideo =
@@ -49,17 +53,6 @@ export const events: EventCard[] = [
     address: "Jl. Karmel Raya No.2, RT.9/RW.4, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530",
     mapsUrl: "https://maps.google.com/?q=Maria+Bunda+Karmel+Church",
   },
-  // {
-  //   title: "RECEPTION",
-  //   day: "SATURDAY",
-  //   month: "APR",
-  //   date: "18",
-  //   year: "2026",
-  //   time: "11.00 - 13.00 WIB",
-  //   venue: "Balai Sartika Convention Hall",
-  //   address: "Jl. Suryalaya Indah No. 1-3 Buah Batu, Cijagra, Bandung",
-  //   mapsUrl: "https://maps.google.com/?q=Balai+Sartika+Convention+Hall+Bandung",
-  // },
 ];
 
 export const topGallery: ImageGalleryItem[] = [
@@ -160,26 +153,10 @@ export const weddingGiftCards = [
     detail: "6510350535",
     copy: "6510350535",
   },
-  // {
-  //   kind: "gift",
-  //   logo: giftIcon,
-  //   title: "Send Gift",
-  //   detail:
-  //     "Evan (08123456789)\nJl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
-  //   copy:
-  //     "Evan (08123456789), Jl. Arcadia Raya No.9, Bojongsiang, Bandung Jawa Barat 40288",
-  // },
-  // {
-  //   kind: "gift",
-  //   logo: giftIcon,
-  //   title: "Gift Registry",
-  //   detail: "Open the registry through the original énvelope workflow.",
-  //   copy: "https://envelope.id",
-  // },
 ];
 
 export const calendarUrl =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20Wedding%20of%20Hansen%20%26%20Kezia&dates=20260411T000000Z/20260411T060000Z&details=Join%20our%20celebration%20for%20Hansen%20%26%20Kezia&location=Balai%20Sartika%20Convention%20Hall";
+  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20Wedding%20of%20Daniel%20%26%20Listi&dates=20270130T050000Z/20270130T140000Z&details=Join%20our%20celebration%20for%20Daniel%20%26%20Listi&location=Maria%20Bunda%20Karmel%20Church";
 
 export function getRemainingTime() {
   const distance = targetDate.getTime() - Date.now();

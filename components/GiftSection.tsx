@@ -55,7 +55,7 @@ export default function GiftSection({
                 </div>
                 <div className="gift-body">
                   <h3>{card.title}</h3>
-                  <p>{card.detail}</p>
+                  <h3>{card.detail}</h3>
                 </div>
                 <button
                   type="button"

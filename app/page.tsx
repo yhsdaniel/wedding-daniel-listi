@@ -3,6 +3,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { GalleryItem, Wish } from "@/app/types";
+import { motion } from "framer-motion";
 import {
   backgroundVideo,
   calendarUrl,
@@ -28,6 +29,8 @@ import RsvpSection from "@/components/RsvpSection";
 import GallerySection from "@/components/GallerySection";
 import GiftSection from "@/components/GiftSection";
 import Lightbox from "@/components/Lightbox";
+import { ChevronDown } from "lucide-react";
+import QuotesSection from "@/components/QuotesSection";
 
 const defaultAttendance = "Attend";
 
@@ -201,51 +204,65 @@ export default function Home() {
                 We&apos;re delighted to invite you to our celebration.
               </p>
             </div>
-          </section>
-
-          <section id="couple" data-section className="snap-section">
-            <div className="content-card">
-              <div className="section-header">
-                <p className="card-eyebrow reanimate fade">GROOM &amp; BRIDE</p>
-                <div className="divider reanimate fade delay-2" />
-              </div>
-              <div className="couple-grid">
-                <article className="person-card reanimate left delay-2">
-                  <p className="person-role">THE GROOM</p>
-                  <h2 className="person-name">Daniel</h2>
-                  <p className="person-full-name">Daniel Kristiawan</p>
-                  <p className="section-copy">Son of</p>
-                  <p className="section-copy">
-                    Johan Andrianto (Father) &amp; Heri Pebruariningsih (Mother)
-                  </p>
-                  <a
-                    className="inline-link"
-                    href="https://instagram.com/yhskris"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    @yhskris
-                  </a>
-                </article>
-                <article className="person-card reanimate right delay-3">
-                  <p className="person-role">THE BRIDE</p>
-                  <h2 className="person-name">Listi</h2>
-                  <p className="person-full-name">Listiany Sukmawaty</p>
-                  <p className="section-copy">Daughter of</p>
-                  <p className="section-copy">
-                    Yoyong (Father) &amp; Mufliha (Mother)
-                  </p>
-                  <a
-                    className="inline-link"
-                    href="https://instagram.com/liz.lingz"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    @liz.lingz
-                  </a>
-                </article>
+            {/* Scroll Indicator */}
+            <div className="scroll-indicator">
+              <span>SCROLL</span>
+              <div className="scroll-indicator-arrow">
+                <ChevronDown size={14} strokeWidth={2} />
+                <ChevronDown size={14} strokeWidth={2} className="-mt-1" />
               </div>
             </div>
+          </section>
+
+          <QuotesSection />
+
+          <section id="couple-groom" data-section className="snap-section">
+            <motion.article
+              className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg')]"
+            >
+              <p className="person-vertical-label">THE GROOM</p>
+              <div className="person-banner">
+                <h2 className="person-name">Daniel</h2>
+                <p className="person-full-name">Daniel Kristiawan</p>
+                <p className="section-copy">Son of</p>
+                <p className="section-copy">
+                  Mr. Johan Andrianto &amp; Mrs. Heri Pebruariningsih
+                </p>
+                <a
+                  className="inline-link py-1 px-2 bg-white opacity-80 hover:opacity-100 transition-opacity"
+                  href="https://instagram.com/yhskris"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @yhskris
+                </a>
+              </div>
+            </motion.article>
+          </section>
+
+          <section id="couple-bride" data-section className="snap-section">
+            <motion.article
+              className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg')]"
+            >
+              <div className="absolute inset-0 bg-black/30" />
+              <p className="person-vertical-label">THE BRIDE</p>
+              <div className="person-banner">
+                <h2 className="person-name">Listi</h2>
+                <p className="person-full-name">Listiany Sukmawaty</p>
+                <p className="section-copy">Daughter of</p>
+                <p className="section-copy">
+                  Mr. Yoyong &amp; Mrs. Mufliha
+                </p>
+                <a
+                  className="inline-link p-4 bg-white opacity-80 hover:opacity-100 transition-opacity"
+                  href="https://instagram.com/liz.lingz"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @liz.lingz
+                </a>
+              </div>
+            </motion.article>
           </section>
 
           <section id="story" data-section className="snap-section">
@@ -261,39 +278,56 @@ export default function Home() {
                 <h2 className="section-heading reanimate up delay-2">
                   The Path Where Two Hearts Unite
                 </h2>
-                <div className="story-chapter reanimate up delay-3">
-                  <p className="story-label">The Beginning</p>
-                  <p className="section-copy">
-                    Our story began like a quiet song, unexpected yet
-                    comforting. We met at just the right time, when life was
-                    still figuring itself out. What started as casual
-                    conversations turned into deep connections, shared dreams,
-                    and a sense of home in each other&apos;s presence.
-                  </p>
+
+                {/* === HORIZONTAL SCROLL CHAPTERS === */}
+                <div className="story-chapters-scroll-wrapper">
+                  <div className="story-chapters-track">
+
+                    <div className="story-chapter reanimate up delay-3">
+                      <p className="story-label text-white text-lg">The Beginning</p>
+                      <p className="section-copy">
+                        Our story began like a quiet song, unexpected yet
+                        comforting. We met at just the right time, when life was
+                        still figuring itself out. What started as casual
+                        conversations turned into deep connections, shared dreams,
+                        and a sense of home in each other&apos;s presence.
+                      </p>
+                    </div>
+
+                    <div className="story-chapter reanimate up delay-4">
+                      <p className="story-label text-white text-lg">Growing Love</p>
+                      <p className="section-copy">
+                        As time passed, we grew not just as individuals, but as a
+                        team. We&apos;ve celebrated wins, braved challenges, and
+                        found countless reasons to laugh along the way.
+                      </p>
+                    </div>
+
+                    <div className="story-chapter reanimate up delay-5">
+                      <p className="story-label">A Promise for Forever</p>
+                      <p className="section-copy">
+                        Now, with joyful hearts and hopeful eyes, we&apos;re
+                        stepping into the next chapter. This wedding isn&apos;t
+                        just a celebration of a day, it&apos;s a celebration of a
+                        journey, a promise, and the love we&apos;re lucky enough to
+                        call our own.
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* Scroll hint */}
+                  <div className="story-scroll-hint">
+                    <span>Scroll to read more</span>
+                    <span className="story-scroll-arrow animate-bounce">⟶</span>
+                  </div>
                 </div>
-                <div className="story-chapter reanimate up delay-4">
-                  <p className="story-label">Growing Love</p>
-                  <p className="section-copy">
-                    As time passed, we grew not just as individuals, but as a
-                    team. We&apos;ve celebrated wins, braved challenges, and
-                    found countless reasons to laugh along the way.
-                  </p>
-                </div>
-                <div className="story-chapter reanimate up delay-5">
-                  <p className="story-label">A Promise for Forever</p>
-                  <p className="section-copy">
-                    Now, with joyful hearts and hopeful eyes, we&apos;re
-                    stepping into the next chapter. This wedding isn&apos;t
-                    just a celebration of a day, it&apos;s a celebration of a
-                    journey, a promise, and the love we&apos;re lucky enough to
-                    call our own.
-                  </p>
-                </div>
+
               </div>
             </div>
-
-            <CountdownCard countdown={countdown} calendarUrl={calendarUrl} />
           </section>
+
+          <CountdownCard countdown={countdown} calendarUrl={calendarUrl} />
 
           <EventDetailsSection
             events={events}
