@@ -33,22 +33,19 @@ export default function GallerySection({
 }: GallerySectionProps) {
   const galleryItems = [...topGallery, ...bottomGallery];
 
+  // Membagi item galeri menjadi dua kelompok baris
+  const firstRowItems = galleryItems.slice(0, Math.ceil(galleryItems.length / 2));
+  const secondRowItems = galleryItems.slice(Math.ceil(galleryItems.length / 2));
+
   return (
-    <section id="gallery" data-section className="snap-section">
-      <div className="content-card gallery-card">
-        <div className="gallery-title-block reanimate fade delay-2">
-          <p className="card-eyebrow">GALLERY</p>
-          <h2 className="section-heading large">Moments in Time</h2>
-          <p className="gallery-helper">Tap image for slideshow view</p>
-          <p className="gallery-helper muted">All images displayed in a modern grid</p>
-        </div>
+    <section id="gallery" data-section className="snap-section w-full overflow-hidden text-white">
+      <div className="gallery-card w-full min-h-screen flex flex-col justify-center pt-20 relative px-0">
+        {/* ================= BARIS 1 (ROW ATAS) ================= */}
+        {/* Menggunakan relative agar judul absolute mengacu pada blok kontainer atas ini */}
+        <div className="gallery-title-block relative w-full mb-12">
 
-        {/* === 2 BARIS SCROLL INDEPENDEN === */}
-        <div className="gallery-rows-wrapper reanimate fade delay-3">
-
-          {/* BARIS 1 */}
-          <div className="gallery-row">
-            {galleryItems.slice(0, Math.ceil(galleryItems.length / 2)).map((item, index) => {
+          <div className="gallery-row flex flex-nowrap gap-4 overflow-x-auto no-scrollbar">
+            {firstRowItems.map((item, index) => {
               const isVideo = item.type === "video";
               const key = isVideo ? `${item.videoId}-row1-${index}` : `${item.full}-row1-${index}`;
               return (
@@ -58,25 +55,34 @@ export default function GallerySection({
                   className={`gallery-pill-item ${isVideo ? "video-item" : ""}`}
                   onClick={() => onOpenLightbox(item)}
                 >
-                  <Image
+                  <img
                     src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
-                    alt={item.alt}
-                    fill
+                    alt={"Gallery image"}
                     style={{ objectFit: "cover" }}
                   />
-                  {isVideo && (
-                    <span className="video-play">
-                      <Image src={playIcon} alt="Play video" fill style={{ objectFit: "contain" }} />
-                    </span>
-                  )}
                 </button>
               );
             })}
           </div>
 
-          {/* BARIS 2 */}
-          <div className="gallery-row">
-            {galleryItems.slice(Math.ceil(galleryItems.length / 2)).map((item, index) => {
+          {/* JUDUL UTAMA: Diposisikan absolute menimpa awal geseran gambar kiri */}
+          <div className="absolute left-6 top-0 -translate-y-5 z-30 pointer-events-none max-w-[50%]">
+            <h2 className="belgantFont text-white text-4xl md:text-6xl font-normal leading-none tracking-wide drop-shadow-md">
+              Moments <br /> <span className="italic font-serif">in</span> Time
+            </h2>
+          </div>
+
+          {/* Petunjuk Geser (Swipe Hint) di bawah gambar baris pertama */}
+          <div className="text-right pr-6 mt-2 flex items-center justify-end gap-2 text-xs italic tracking-wider">
+            <span>Swipe to see more</span>
+            <span>⟶</span>
+          </div>
+        </div>
+
+        {/* ================= BARIS 2 (ROW BAWAH) ================= */}
+        <div className="gallery-title-block w-full mt-4">
+          <div className="gallery-row flex flex-nowrap gap-4 overflow-x-auto no-scrollbar">
+            {secondRowItems.map((item, index) => {
               const isVideo = item.type === "video";
               const key = isVideo ? `${item.videoId}-row2-${index}` : `${item.full}-row2-${index}`;
               return (
@@ -86,27 +92,31 @@ export default function GallerySection({
                   className={`gallery-pill-item ${isVideo ? "video-item" : ""}`}
                   onClick={() => onOpenLightbox(item)}
                 >
-                  <Image
+                  <img
                     src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
-                    alt={item.alt}
-                    fill
+                    alt={item.alt || "Gallery image"}
                     style={{ objectFit: "cover" }}
                   />
+
+                  {/* Overlay Tombol Play Video */}
                   {isVideo && (
-                    <span className="video-play">
-                      <Image src={playIcon} alt="Play video" fill style={{ objectFit: "contain" }} />
-                    </span>
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 z-10">
+                      <div className="w-12 h-12 rounded-full border border-white/60 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+                        <span className="text-white text-xl ml-1">▶</span>
+                      </div>
+                    </div>
                   )}
                 </button>
               );
             })}
           </div>
 
+          {/* Petunjuk Tambahan di Bawah */}
+          <div className="pl-6 mt-3 text-xs opacity-60 tracking-wide font-light">
+            <span>Tap Image for slideshow view</span>
+          </div>
         </div>
 
-        <p className="quote reanimate up delay-5">
-          &quot;To love and be loved is to feel the sun from both sides.&quot; - David Viscott
-        </p>
       </div>
     </section>
   );

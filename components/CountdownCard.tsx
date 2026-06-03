@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
@@ -20,8 +22,8 @@ type OpeningHeadingProps = {
 function OpeningHeading({ children, className = "", delay }: OpeningHeadingProps) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: -80 }}
-            whileInView={{ opacity: 1, y: -100 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ amount: 0.25 }}
             transition={{ duration: 0.75, delay }}
             className={`absolute ${className}`}
@@ -41,16 +43,16 @@ export default function CountdownCard({ countdown, calendarUrl }: CountdownProps
 
   return (
     <div className="content-card countdown-card snap-section flex-col">
-      <OpeningHeading className="countdown-title top-[calc(50%-80px)] left-1/2 -translate-x-1/2 reanimate fade" delay={0}>
+      <OpeningHeading className="countdown-title top-[30%] left-1/2 -translate-x-1/2 reanimate fade" delay={0}>
         ALMOST TIME FOR OUR CELEBRATION
       </OpeningHeading>
       <div className="countdown-grid w-full top-[calc(50%-100px)]">
         {countdownItems.map((item, index) => (
           <div
-            key={item.label}
+            key={index}
             className={`countdown-box reanimate up delay-${Math.min(index + 2, 6)}`}
           >
-            <span>{item.value}</span>
+            {/* <span>{item.value}</span> */}
             <small>{item.label}</small>
           </div>
         ))}

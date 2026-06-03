@@ -42,7 +42,7 @@ export default function RsvpSection({
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card">
           <SectionHeader eyebrow="RSVP" />
           <h2 className="section-heading">WILL YOU ATTEND?</h2>
-          <p className="section-copy">
+          <p className="section-copy mt-4">
             We kindly request your prompt response to confirm your attendance at our
             upcoming event. Alongside your RSVP, please take a moment to extend your
             warm regards and best wishes.
@@ -102,7 +102,6 @@ export default function RsvpSection({
               SUBMIT
             </button>
           </form>
-          {submitMessage ? <p className="form-message">{submitMessage}</p> : null}
         </motion.div>
       </section>
 

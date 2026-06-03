@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Playfair_Display } from 'next/font/google'
+import { Roboto } from 'next/font/google'
+import { metropolisFont } from "./fonts";
+import { Toaster } from "react-hot-toast";
 
-const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
+const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: "Daniel & Listi Wedding Invitation",
@@ -16,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className={`${playfair.className} min-h-full flex flex-col`}>{children}</body>
+      <body className={`${metropolisFont.className} min-h-full flex flex-col`}>
+        {children}
+        <Toaster position="top-center" />
+      </body>
     </html>
   );
 }

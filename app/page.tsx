@@ -1,9 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { GalleryItem, Wish } from "@/app/types";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Mail, Pause, Play } from "lucide-react";
 import {
   backgroundVideo,
   calendarUrl,
@@ -22,7 +23,6 @@ import {
   getRemainingTime,
   storyImage,
 } from "@/lib/invitationData";
-import HeroRail from "@/components/HeroRail";
 import CountdownCard from "@/components/CountdownCard";
 import EventDetailsSection from "@/components/EventDetailsSection";
 import RsvpSection from "@/components/RsvpSection";
@@ -31,6 +31,15 @@ import GiftSection from "@/components/GiftSection";
 import Lightbox from "@/components/Lightbox";
 import { ChevronDown } from "lucide-react";
 import QuotesSection from "@/components/QuotesSection";
+import LeftSideSection from "@/components/LeftSideSection";
+import LoveStorySection from "@/components/LoveStorySection";
+
+import { Playfair_Display, Roboto } from 'next/font/google'
+import { belgantFont } from "./fonts";
+import CoupleSection from "@/components/CoupleSection";
+import toast from "react-hot-toast";
+
+const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
 
 const defaultAttendance = "Attend";
 
@@ -129,7 +138,7 @@ export default function Home() {
     event.preventDefault();
 
     if (!guestName.trim()) {
-      setSubmitMessage("Please enter your name first.");
+      toast.error("Please enter your name first.");
       return;
     }
 
@@ -145,7 +154,8 @@ export default function Home() {
       ]);
     }
 
-    setSubmitMessage("Thank you. Your RSVP has been captured on this demo page.");
+    toast.success("Thank you. Your RSVP has been captured on this demo page.");
+    scrollToSection("wishes")
     setGuestName("");
     setGuestCount(1);
     setAttendance(defaultAttendance);
@@ -155,44 +165,72 @@ export default function Home() {
   const copyText = async (value: string) => {
     try {
       await navigator.clipboard.writeText(value);
-      setSubmitMessage("Copied to clipboard.");
+      toast.success("Copied to clipboard.");
     } catch {
-      setSubmitMessage("Copy failed. Please copy it manually.");
+      toast.error("Copy failed. Please copy it manually.");
     }
   };
 
   const toggleGiftOpen = () => setGiftOpen((s) => !s);
   const openLightbox = (item: GalleryItem) => setLightbox(item);
   const closeLightbox = () => setLightbox(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const toggleAudio = async () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      await audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <>
-      <div className="elixir-shell">
-        <div className="elixir-background" aria-hidden="true">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={heroImage}
-            className="background-video"
-          >
-            <source src={backgroundVideo} type="video/mp4" />
-          </video>
-          <div className="background-overlay" />
-        </div>
-
-        <HeroRail
+      <div className="elixir-shell flex">
+        {/* <HeroRail
           heroImage={heroImage}
           menuItems={menuItems}
           activeSection={activeSection}
           mobileMenuOpen={mobileMenuOpen}
           onNavigate={scrollToSection}
           onToggleMobileMenu={() => setMobileMenuOpen((s) => !s)}
-        />
+        /> */}
+        {/* Add audio */}
+        <audio autoPlay controls ref={audioRef} src={"/for_you_i_will.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
+        </audio>
+        <button
+          onClick={toggleAudio}
+          className=" fixed bottom-2 left-2 z-50 flex items-center justify-center w-10 h-10 border border-white/50 rounded-full bg-black/50 text-white hover:bg-gray-800 transition"
+        >
+          {isPlaying ? (
+            <Pause size={20} />
+          ) : (
+            <Play size={20} fill="currentColor" />
+          )}
+        </button>
 
-        <main className="content-column">
-          <section id="home" data-section className="snap-section hero-card">
+        <LeftSideSection />
+
+        <main className="content-column relative flex-1">
+          <div className="elixir-background md:w-4/12 right-0 ml-auto" aria-hidden="true">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={heroImage}
+              className="background-video"
+            >
+              <source src={backgroundVideo} type="video/mp4" />
+            </video>
+            <div className="background-overlay" />
+          </div>
+          <section id="home" data-section className="snap-section hero-card w-full">
             <div className="content-card hero-card">
               <div className="card-eyebrow reanimate fade">THE WEDDING OF</div>
               <div className="cover-title-block">
@@ -216,116 +254,9 @@ export default function Home() {
 
           <QuotesSection />
 
-          <section id="couple-groom" data-section className="snap-section">
-            <motion.article
-              className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg')]"
-            >
-              <p className="person-vertical-label">THE GROOM</p>
-              <div className="person-banner">
-                <h2 className="person-name">Daniel</h2>
-                <p className="person-full-name">Daniel Kristiawan</p>
-                <p className="section-copy">Son of</p>
-                <p className="section-copy">
-                  Mr. Johan Andrianto &amp; Mrs. Heri Pebruariningsih
-                </p>
-                <a
-                  className="inline-link py-1 px-2 bg-white opacity-80 hover:opacity-100 transition-opacity"
-                  href="https://instagram.com/yhskris"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @yhskris
-                </a>
-              </div>
-            </motion.article>
-          </section>
+          <CoupleSection />
 
-          <section id="couple-bride" data-section className="snap-section">
-            <motion.article
-              className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg')]"
-            >
-              <div className="absolute inset-0 bg-black/30" />
-              <p className="person-vertical-label">THE BRIDE</p>
-              <div className="person-banner">
-                <h2 className="person-name">Listi</h2>
-                <p className="person-full-name">Listiany Sukmawaty</p>
-                <p className="section-copy">Daughter of</p>
-                <p className="section-copy">
-                  Mr. Yoyong &amp; Mrs. Mufliha
-                </p>
-                <a
-                  className="inline-link p-4 bg-white opacity-80 hover:opacity-100 transition-opacity"
-                  href="https://instagram.com/liz.lingz"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @liz.lingz
-                </a>
-              </div>
-            </motion.article>
-          </section>
-
-          <section id="story" data-section className="snap-section">
-            <div className="content-card story-card">
-              <div className="story-media reanimate fade delay-2">
-                <img src={storyImage} alt="Story portrait" className="story-image" />
-              </div>
-              <div className="story-copy">
-                <div className="section-header">
-                  <p className="card-eyebrow reanimate fade">LOVE STORY</p>
-                  <div className="divider reanimate fade delay-2" />
-                </div>
-                <h2 className="section-heading reanimate up delay-2">
-                  The Path Where Two Hearts Unite
-                </h2>
-
-                {/* === HORIZONTAL SCROLL CHAPTERS === */}
-                <div className="story-chapters-scroll-wrapper">
-                  <div className="story-chapters-track">
-
-                    <div className="story-chapter reanimate up delay-3">
-                      <p className="story-label text-white text-lg">The Beginning</p>
-                      <p className="section-copy">
-                        Our story began like a quiet song, unexpected yet
-                        comforting. We met at just the right time, when life was
-                        still figuring itself out. What started as casual
-                        conversations turned into deep connections, shared dreams,
-                        and a sense of home in each other&apos;s presence.
-                      </p>
-                    </div>
-
-                    <div className="story-chapter reanimate up delay-4">
-                      <p className="story-label text-white text-lg">Growing Love</p>
-                      <p className="section-copy">
-                        As time passed, we grew not just as individuals, but as a
-                        team. We&apos;ve celebrated wins, braved challenges, and
-                        found countless reasons to laugh along the way.
-                      </p>
-                    </div>
-
-                    <div className="story-chapter reanimate up delay-5">
-                      <p className="story-label">A Promise for Forever</p>
-                      <p className="section-copy">
-                        Now, with joyful hearts and hopeful eyes, we&apos;re
-                        stepping into the next chapter. This wedding isn&apos;t
-                        just a celebration of a day, it&apos;s a celebration of a
-                        journey, a promise, and the love we&apos;re lucky enough to
-                        call our own.
-                      </p>
-                    </div>
-
-                  </div>
-
-                  {/* Scroll hint */}
-                  <div className="story-scroll-hint">
-                    <span>Scroll to read more</span>
-                    <span className="story-scroll-arrow animate-bounce">⟶</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </section>
+          <LoveStorySection storyImage={storyImage} />
 
           <CountdownCard countdown={countdown} calendarUrl={calendarUrl} />
 
@@ -378,33 +309,54 @@ export default function Home() {
         </main>
       </div>
 
-      <div className={`cover-screen ${invitationOpen ? "is-hidden" : ""}`}>
-        <div
-          className="cover-media"
-          style={{
-            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.76)), url(${coverImage})`,
-          }}
-        >
-          <p className="cover-kicker">THE WEDDING OF</p>
-          <div className="cover-title-block">
-            <span className="cover-ghost">D L</span>
-            <h1>Daniel</h1>
-            <h1>Listi</h1>
-          </div>
-          <p className="cover-date">SATURDAY, 30 / 01 / 2027</p>
-          <p className="cover-guest">Dear, Guest</p>
-          <button
-            type="button"
-            className="pill-button cover-button"
-            onClick={() => setInvitationOpen(true)}
+      <AnimatePresence>
+        {!invitationOpen && (
+          <motion.div
+            initial={{ opacity: 1, visibility: "visible" }}
+            animate={{ opacity: 1, visibility: "visible" }}
+            exit={{ opacity: 0, visibility: "hidden" }}
+            transition={{ duration: 0.75, ease: "easeInOut" }}
+            className="fixed size-full z-50 overflow-hidden"
           >
-            OPEN INVITATION
-          </button>
-          <p className="cover-note">
-            We apologize if there is any misspelling of name or title.
-          </p>
-        </div>
-      </div>
+            <div
+              className="cover-media p-6 py-[10%] gap-6 hidden md:block"
+              style={{
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.76)), url(${coverImage})`,
+              }}
+            >
+              <div className="flex flex-col items-center gap-4">
+                <p className="text-white">THE WEDDING OF</p>
+                <div className="cover-title-block text-left">
+                  <h1 className={`${belgantFont.className}`}>Daniel</h1>
+                  <h1 className={`${belgantFont.className} text-white/40 absolute -top-4 translate-y-[50%] -right-4`} style={{ fontSize: "6rem"}}>&</h1>
+                  <h1 className={`${belgantFont.className}`}>Listi</h1>
+                </div>
+                <p className="text-white text-sm">SATURDAY, 30 / 01 / 2027</p>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <p className="text-white">
+                  Dear,
+                </p>
+                <div className="flex justify-center items-center text-white border-b border-white w-60 h-8">Saudara</div>
+                <p className="text-white italic text-xs my-2">
+                  We apologize if there is any misspelling of name or title.
+                </p>
+                <button
+                  type="button"
+                  className="pill-button cover-button"
+                  onClick={() => {
+                    setInvitationOpen(true);
+                    audioRef.current?.play();
+                  }}
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  OPEN INVITATION
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {lightbox ? <Lightbox item={lightbox} onClose={closeLightbox} /> : null}
     </>

@@ -1,3 +1,5 @@
+'use client'
+
 import {
   EventCard,
   GalleryItem,
@@ -5,7 +7,7 @@ import {
   MenuItem,
 } from "@/app/types";
 
-export const targetDate = new Date("2026-04-11T00:00:00+07:00");
+export const targetDate = new Date("2027-01-30T12:00:00+07:00");
 
 export const heroImage =
   "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
