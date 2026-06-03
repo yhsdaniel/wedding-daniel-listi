@@ -1,29 +1,45 @@
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export default function LoveStorySection({ storyImage }: { storyImage: string }) {
     return (
         <section id="story" data-section className="snap-section">
             <div className="content-card story-card">
-                <div className="flex items-center">
-                    <Image 
-                        src={storyImage} 
-                        alt="Story portrait" 
-                        className="story-image md:w-8/12 object-cover object-center" 
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: false, amount: 0.25 }}
+                    transition={{ duration: 0.75, delay: 0.2 }}
+                    className="flex items-center">
+                    <Image
+                        src={storyImage}
+                        alt="Story portrait"
+                        className="story-image md:w-8/12 object-cover object-center"
                         width={250}
                         height={100}
                     />
                     <h4 className="belgantFont w-6/12 text-3xl md:text-3xl absolute z-30 top-10 right-0">
                         The Path Where Two Hearts Unite
                     </h4>
-                </div>
+                </motion.div>
                 <div className="story-copy">
-                    <div className="section-header">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: false, amount: 0.25 }}
+                        transition={{ duration: 0.75, delay: 0.4 }}
+                        className="section-header">
                         <p className="card-eyebrow reanimate fade">LOVE STORY</p>
                         <div className="divider reanimate fade delay-2" />
-                    </div>
+                    </motion.div>
 
                     {/* === HORIZONTAL SCROLL CHAPTERS === */}
-                    <div className="story-chapters-scroll-wrapper">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: false, amount: 0.25 }}
+                        transition={{ duration: 0.75, delay: 0.6 }}
+                        className="story-chapters-scroll-wrapper">
                         <div className="story-chapters-track">
                             <div className="story-chapter reanimate up delay-3">
                                 <p className="belgantFont text-white text-xl my-2 font-bold">The Beginning</p>
@@ -63,7 +79,7 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                             <span>Scroll to read more</span>
                             <span className="story-scroll-arrow">⟶</span>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

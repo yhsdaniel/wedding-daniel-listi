@@ -1652,7 +1652,7 @@ img {
 /* Scroll indicator styling */
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;

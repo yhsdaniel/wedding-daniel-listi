@@ -230,15 +230,15 @@ export default function Home() {
             </video>
             <div className="background-overlay" />
           </div>
-          <section id="home" data-section className="snap-section hero-card w-full">
-            <div className="content-card hero-card">
+          <section id="home" data-section className="snap-section hero-card w-full flex justify-between items-center">
+            <div className="content-card hero-card text-center">
               <div className="card-eyebrow reanimate fade">THE WEDDING OF</div>
               <div className="cover-title-block">
                 <span className="cover-ghost reanimate fade delay-2">D L</span>
                 <h1 className="cover-title reanimate fade delay-3">Daniel</h1>
                 <h1 className="cover-title reanimate fade delay-4">Listi</h1>
               </div>
-              <p className="section-copy reanimate up delay-5">
+              <p className="section-copy text-sm reanimate up delay-5">
                 We&apos;re delighted to invite you to our celebration.
               </p>
             </div>
@@ -319,7 +319,7 @@ export default function Home() {
             className="fixed size-full z-50 overflow-hidden"
           >
             <div
-              className="cover-media p-6 py-[10%] gap-6 hidden md:block"
+              className="cover-media p-6 py-[25%] gap-6 hidden md:block"
               style={{
                 backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.76)), url(${coverImage})`,
               }}
