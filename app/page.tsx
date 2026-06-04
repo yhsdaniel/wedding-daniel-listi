@@ -322,9 +322,9 @@ export default function Home() {
             className="fixed size-full z-50 overflow-hidden"
           >
             <div
-              className="cover-media p-6 py-[25%] gap-6 hidden md:block"
+              className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.76)), url(${coverImage})`,
+                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18) 60%, rgba(0, 0, 0, 0.76)), url(${coverImage})`,
               }}
             >
               <div className="flex flex-col items-center gap-4">

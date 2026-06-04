@@ -380,6 +380,13 @@ img {
   font-weight: 400;
 }
 
+@media (min-width: 768px) {
+  .hero-title,
+  .cover-title-block h1 {
+    font-size: clamp(5rem, 10vw, 4rem);
+  }
+}
+
 .cover-title-block-leftside h1 {
   margin: 0;
   font-family: "Belgan Aesthetic", "Times New Roman", serif;
@@ -709,7 +716,7 @@ img {
   text-transform: uppercase;
   font-size: 0.74rem;
   font-weight: 700;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
 }
 
 .pill-button.secondary {
@@ -1356,7 +1363,7 @@ img {
   /* padding: 2rem 1.5rem; */
   border: 1px solid var(--line);
   /* border-radius: 2rem; */
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   text-align: center;
   box-shadow: var(--shadow);
