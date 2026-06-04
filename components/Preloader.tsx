@@ -1,12 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Preloader({ isVisible, setIsVisible }: { isVisible: boolean, setIsVisible: (visible: boolean) => void }) {
     const [isFading, setIsFading] = useState(true);
 
+    const hasExecuted = useRef(false);
+
     useEffect(() => {
-        // Kunci scroll pada body saat preloader aktif
+
+        if (!isVisible || hasExecuted.current) return;
+        hasExecuted.current = true;
+        
         document.body.style.overflow = "hidden";
 
         const handleHide = () => {
@@ -14,18 +19,15 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
             setTimeout(() => {
                 setIsVisible(false);
             }, 1000);
-            // Berikan waktu untuk animasi fade out Tailwind (duration-500) sebelum mengembalikan scroll
             setTimeout(() => {
                 document.body.style.overflow = "visible";
             }, 1000);
         };
 
-        // Timeout cadangan jika window load terlalu lama (maksimal 10 detik)
         const forceHide = setTimeout(() => {
             handleHide();
         }, 10000);
 
-        // Hilangkan preloader setelah animasi selesai (4.5 detik sesuai script asli)
         const normalHide = setTimeout(() => {
             clearTimeout(forceHide);
             handleHide();
@@ -35,7 +37,6 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
         return () => {
             clearTimeout(forceHide);
             clearTimeout(normalHide);
-            document.body.style.overflow = "visible";
         };
     }, [isVisible, setIsVisible]);
 
@@ -43,7 +44,6 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
 
     return (
         <>
-            {/* Custom Keyframes yang tidak dicover oleh default Tailwind utilites */}
             <style dangerouslySetInnerHTML={{
                 __html: `
                     @keyframes fadeInOut {
@@ -80,12 +80,11 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
                         font-family: 'Belgan Aesthetic', sans-serif;
                     }
                 `}} />
-            
+
             <div
                 id="preloader"
-                className={`fixed inset-0 bg-black/90 backdrop-blur-[5px] z-[100] flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
-                    isFading ? "opacity-100" : "opacity-0"
-                }`}
+                className={`fixed inset-0 bg-black/90 backdrop-blur-[5px] z-[100] flex items-center justify-center transition-opacity duration-1000 ease-in-out ${isFading ? "opacity-100" : "opacity-0"
+                    }`}
             >
                 <div className="relative w-full h-full flex items-center justify-center">
                     <div className="text-white text-sm font-bold tracking-[3px] font-belgan absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 animate-fade-in-out">
