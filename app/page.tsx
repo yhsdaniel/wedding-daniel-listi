@@ -38,12 +38,14 @@ import { Playfair_Display, Roboto } from 'next/font/google'
 import { belgantFont } from "./fonts";
 import CoupleSection from "@/components/CoupleSection";
 import toast from "react-hot-toast";
+import Preloader from "@/components/Preloader";
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
 
 const defaultAttendance = "Attend";
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
   const [invitationOpen, setInvitationOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [giftOpen, setGiftOpen] = useState(false);
@@ -201,7 +203,7 @@ export default function Home() {
           onToggleMobileMenu={() => setMobileMenuOpen((s) => !s)}
         /> */}
         {/* Add audio */}
-        <audio autoPlay controls ref={audioRef} src={"/for_you_i_will.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
+        <audio autoPlay controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
         </audio>
         <button
           onClick={toggleAudio}
@@ -217,6 +219,7 @@ export default function Home() {
         <LeftSideSection />
 
         <main className="content-column relative flex-1">
+          <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
           <div className="elixir-background md:w-4/12 right-0 ml-auto" aria-hidden="true">
             <video
               autoPlay
@@ -347,6 +350,7 @@ export default function Home() {
                   onClick={() => {
                     setInvitationOpen(true);
                     audioRef.current?.play();
+                    setIsVisible(true);
                   }}
                 >
                   <Mail className="w-4 h-4 mr-2" />
