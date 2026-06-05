@@ -11,9 +11,9 @@ type EventDetailsProps = {
 };
 
 const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.24 },
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: false, amount: 0.24 },
 };
 
 export default function EventDetailsSection({

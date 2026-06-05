@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from 'framer-motion'
+import { storyImage } from "@/lib/invitationData";
 
 type GiftCard = {
   kind: string;
@@ -18,8 +20,6 @@ type GiftSectionProps = {
 };
 
 export default function GiftSection({
-  giftOpen,
-  toggleGiftOpen,
   cards,
   copyIcon,
   giftImage,
@@ -28,22 +28,54 @@ export default function GiftSection({
   return (
     <section id="gift" data-section className="snap-section">
       <div className="content-card gift-card">
-        <div
+        {/* <div
           className="gift-visual reanimate fade delay-1"
           style={{
             backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)), url(${giftImage})`,
           }}
         />
-        <p className="card-eyebrow reanimate fade delay-3">WEDDING GIFT</p>
-        <h2 className="section-copy reanimate up delay-4 large">
+        <p className="card-eyebrow reanimate fade delay-3">WEDDING GIFT</p> */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.25 }}
+          transition={{ duration: 0.75, delay: 0.2 }}
+          className="flex justify-center items-end gap-4 my-6"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.25 }}
+            transition={{ duration: 0.75, delay: 0.2 }}
+            className="wedding-gift reanimate fade delay-1"
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)), url(${giftImage})`,
+            }}
+          >
+          </motion.div>
+          <h4 className="belgantFont w-5/12 text-3xl md:text-3xl text-left">
+            WEDDING GIFT
+          </h4>
+        </motion.div>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.25 }}
+          transition={{ duration: 0.75, delay: 0.4 }}
+          className="section-copy reanimate up delay-4 text-sm">
           The greatest gift is having you with us. If you&apos;d like to give a token
           of love, we would be truly grateful.
-        </h2>
+        </motion.h2>
 
-        <div className={`gift-panel is-open`}>
+        <div className="gift-panel is-open">
           <div className="gift-grid">
             {cards.map((card) => (
-              <article key={card.title} className="gift-option">
+              <motion.article
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: false, amount: 0.25 }}
+                transition={{ duration: 0.75, delay: 0.6 }}
+                key={card.title} className="gift-option">
                 <div className="gift-icon-wrap">
                   <Image
                     src={card.logo}
@@ -69,7 +101,7 @@ export default function GiftSection({
                     height={40}
                   />
                 </button>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>

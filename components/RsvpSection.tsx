@@ -38,11 +38,11 @@ export default function RsvpSection({
 }: RsvpProps) {
   return (
     <>
-      <section id="rsvp" data-section className="snap-section">
+      <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start" }}>
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card">
           <SectionHeader eyebrow="RSVP" />
-          <h2 className="section-heading">WILL YOU ATTEND?</h2>
-          <p className="section-copy mt-4">
+          <h2 className="section-heading" style={{ margin: "1rem 0", fontSize: "2rem" }}>WILL YOU ATTEND?</h2>
+          <p className="section-copy mt-4" style={{ fontSize: "0.8rem" }}>
             We kindly request your prompt response to confirm your attendance at our
             upcoming event. Alongside your RSVP, please take a moment to extend your
             warm regards and best wishes.
@@ -105,7 +105,7 @@ export default function RsvpSection({
         </motion.div>
       </section>
 
-      <section id="wishes" data-section className="snap-section">
+      <section id="wishes" data-section className="snap-section" style={{ alignItems: "start" }}>
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card">
           <div className="section-header">
             <p className="card-eyebrow">WISHES</p>
@@ -118,9 +118,6 @@ export default function RsvpSection({
                 <article key={`${wish.name}-${index}`} className="wish-item">
                   <div>
                     <p className="wish-name">{wish.name}</p>
-                    <p className="wish-meta">
-                      {wish.attendance} / {wish.guests} guest{wish.guests > 1 ? "s" : ""}
-                    </p>
                   </div>
                   <p className="wish-message">{wish.message}</p>
                 </article>

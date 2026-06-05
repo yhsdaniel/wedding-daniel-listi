@@ -22,6 +22,7 @@ import {
   weddingGiftCards,
   getRemainingTime,
   storyImage,
+  closingImage,
 } from "@/lib/invitationData";
 import CountdownCard from "@/components/CountdownCard";
 import EventDetailsSection from "@/components/EventDetailsSection";
@@ -299,14 +300,36 @@ export default function Home() {
             onCopy={copyText}
           />
 
-          <section id="closing" data-section className="snap-section">
-            <div className="content-card closing-card">
-              <h2 className="section-heading reanimate fade">WITH HEARTFELT GRATITUDE FOR YOUR PRESENCE AND BLESSINGS</h2>
-              <p className="section-copy reanimate up delay-2">
-                We can&apos;t wait to share this special moment with you. Your
-                presence will make our day even more meaningful.
-              </p>
-              <h3 className="closing-names reanimate fade delay-3">Daniel &amp; Listi</h3>
+          <section id="closing" data-section className="snap-section bg-cover bg-center" style={{
+            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)), url(${closingImage})`,
+          }}>
+            <div className="content-card closing-card h-full flex flex-col justify-between" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
+              <motion.h2
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: false, amount: 0.25 }}
+                transition={{ duration: 0.75, delay: 0.2 }}
+                className="section-heading reanimate fade">WITH HEARTFELT GRATITUDE FOR YOUR PRESENCE AND BLESSINGS
+              </motion.h2>
+              <div>
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: false, amount: 0.25 }}
+                  transition={{ duration: 0.75, delay: 0.4 }}
+                  className="closing-names my-4" style={{ fontSize: "2rem" }}>
+                  Daniel &amp; Listi
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: false, amount: 0.25 }}
+                  transition={{ duration: 0.75, delay: 0.6 }}
+                  className="my-4 text-sm text-white/80">
+                  We can&apos;t wait to share this special moment with you. Your
+                  presence will make our day even more meaningful.
+                </motion.p>
+              </div>
             </div>
           </section>
         </main>
@@ -331,7 +354,7 @@ export default function Home() {
                 <p className="text-white">THE WEDDING OF</p>
                 <div className="cover-title-block text-left">
                   <h1 className={`${belgantFont.className}`}>Daniel</h1>
-                  <h1 className={`${belgantFont.className} text-white/40 absolute -top-4 translate-y-[50%] -right-4`} style={{ fontSize: "6rem"}}>&</h1>
+                  <h1 className={`${belgantFont.className} text-white/40 absolute -top-4 translate-y-[50%] -right-4`} style={{ fontSize: "6rem" }}>&</h1>
                   <h1 className={`${belgantFont.className}`}>Listi</h1>
                 </div>
                 <p className="text-white text-sm">SATURDAY, 30 / 01 / 2027</p>

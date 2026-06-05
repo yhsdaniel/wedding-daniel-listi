@@ -282,6 +282,10 @@ img {
   overflow: hidden;
 }
 
+.closing-section {
+  justify-content: space-between;
+}
+
 .content-card {
   position: relative;
   width: min(100%, 960px);
@@ -381,6 +385,7 @@ img {
 }
 
 @media (min-width: 768px) {
+
   .hero-title,
   .cover-title-block h1 {
     font-size: clamp(5rem, 10vw, 4rem);
@@ -521,13 +526,13 @@ img {
 .person-vertical-label {
   position: absolute;
   left: 1.5rem;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left top;
   color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 1rem;
   z-index: 10;
   white-space: nowrap;
   pointer-events: none;
@@ -1042,7 +1047,6 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
   padding: 0.8rem 1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1092,12 +1096,12 @@ img {
 
 .wishes-list {
   display: grid;
-  gap: 1rem;
+  gap: .5rem;
 }
 
 .wish-item {
   padding: 0.5rem 1.1rem;
-  border-bottom: 3px solid var(--foreground);
+  border-bottom: 2px solid var(--muted);
   background: rgba(255, 255, 255, 0.03);
 }
 
@@ -1114,10 +1118,6 @@ img {
 
 .wish-message {
   margin-top: 0.75rem;
-}
-
-.gallery-card {
-  gap: 1.2rem;
 }
 
 .gallery-title-block {
@@ -1164,6 +1164,18 @@ img {
   object-fit: cover;
 }
 
+.gallery-quote {
+  color: #FFFFFF;
+  font-size: 4rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 0.5em;
+}
+
+.rionaldoFont {
+  font-family: "Rionaldo Angelo", Sans-serif;
+}
+
 .video-item::after {
   content: "";
   position: absolute;
@@ -1200,14 +1212,18 @@ img {
   background-size: cover;
 }
 
+.wedding-gift {
+  width: min(100%, 12rem);
+  aspect-ratio: 1;
+  border-radius: 1.5rem;
+  border: 1px solid var(--line);
+  background-position: center;
+  background-size: cover;
+}
+
 .gift-panel {
   width: min(100%, 9rem);
   margin: 1.5rem auto 0;
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.6rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
   overflow: hidden;
   transition:
     width 0.65s ease,
@@ -1217,7 +1233,6 @@ img {
 
 .gift-panel.is-open {
   width: min(100%, 52rem);
-  background: rgba(0, 0, 0, 0.3);
 }
 
 .gift-panel-head {

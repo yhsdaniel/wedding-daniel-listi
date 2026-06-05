@@ -21,6 +21,8 @@ export const brideImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg";
 export const giftImage =
   "https://wp.envelope.id/wp-content/uploads/2025/11/inv_787_mqiDhs4a.jpg";
+export const closingImage =
+  "https://wp.envelope.id/wp-content/uploads/2025/11/inv_787_MIT1VLqF.jpg";
 export const backgroundVideo =
   "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
 export const framePreview =
