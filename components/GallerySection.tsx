@@ -72,7 +72,7 @@ export default function GallerySection({
           </OpeningHeading>
 
           {/* JUDUL UTAMA: Diposisikan absolute menimpa awal geseran gambar kiri */}
-          <OpeningHeading className="absolute left-6 bottom-0 translate-y-15 z-30 pointer-events-none max-w-[50%]" delay={0.2}>
+          <OpeningHeading className="absolute left-6 bottom-0 translate-y-10 z-30 pointer-events-none max-w-[50%]" delay={0.2}>
             <h2 className="belgantFont text-white text-4xl md:text-5xl font-normal leading-none tracking-wide drop-shadow-md">
               Moments <br /> <span className="italic font-serif">in</span> Time
             </h2>
@@ -87,9 +87,9 @@ export default function GallerySection({
 
         {/* ================= BARIS 2 (ROW BAWAH) ================= */}
         <div className="gallery-title-block w-full mt-4">
-          <OpeningHeading className="absolute -top-25 right-0 -rotate-20 w-64" delay={0.2}>
+          {/* <OpeningHeading className="absolute -top-25 right-0 -rotate-20 w-64" delay={0.2}>
             <div className={`${rionaldoFont.className} gallery-quote`}>"To love and be loved is to feel the sun from both sides." - David Viscott</div>
-          </OpeningHeading>
+          </OpeningHeading> */}
           <OpeningHeading className="gallery-row flex flex-nowrap gap-4 overflow-x-auto no-scrollbar" delay={0.6}>
             {secondRowItems.map((item, index) => {
               const isVideo = item.type === "video";

@@ -221,7 +221,7 @@ export default function Home() {
 
         <main className="content-column relative flex-1">
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
-          <div className="elixir-background md:w-4/12 right-0 ml-auto" aria-hidden="true">
+          <div className="elixir-background xl:w-4/12 right-0 ml-auto xl:ml-0" aria-hidden="true">
             <video
               autoPlay
               muted

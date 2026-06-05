@@ -1172,6 +1172,13 @@ img {
   line-height: 0.5em;
 }
 
+@media (max-width: 500px) {
+  .gallery-quote {
+    font-size: 3rem;
+    width: 10rem;
+  }
+}
+
 .rionaldoFont {
   font-family: "Rionaldo Angelo", Sans-serif;
 }
