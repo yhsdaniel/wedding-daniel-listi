@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function LeftSideSection() {
     return (
-        <div className="2xl:w-8/12 w-7/12 h-screen relative hidden xl:block">
+        <div className="2xl:w-8/12 w-8/12 h-screen relative hidden xl:block">
             <div
                 className="size-full flex flex-col justify-start items-start gap-8 text-left p-10 bg-cover bg-center"
                 style={{

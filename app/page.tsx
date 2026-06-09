@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { GalleryItem, Wish } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { Mail, Pause, Play } from "lucide-react";
@@ -27,6 +27,7 @@ import {
 import CountdownCard from "@/components/CountdownCard";
 import EventDetailsSection from "@/components/EventDetailsSection";
 import RsvpSection from "@/components/RsvpSection";
+import { createClient } from "@/utils/supabase/client";
 import GallerySection from "@/components/GallerySection";
 import GiftSection from "@/components/GiftSection";
 import Lightbox from "@/components/Lightbox";
@@ -44,6 +45,23 @@ import Preloader from "@/components/Preloader";
 const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
 
 const defaultAttendance = "Attend";
+const wishesPerPage = 5;
+
+const supabase = createClient();
+
+type RsvpRow = {
+  name: string;
+  attendance: boolean;
+  guest: number | null;
+  note: string | null;
+};
+
+const mapRsvpToWish = (item: RsvpRow): Wish => ({
+  name: item.name,
+  attendance: item.attendance ? "Attend" : "Not Attend",
+  guests: item.guest || 1,
+  message: item.note || "",
+});
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,9 +74,76 @@ export default function Home() {
   const [guestCount, setGuestCount] = useState(1);
   const [guestName, setGuestName] = useState("");
   const [wishesText, setWishesText] = useState("");
-  const [submitMessage, setSubmitMessage] = useState("");
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [isLoadingWishes, setIsLoadingWishes] = useState(false);
+
+  const fetchWishes = useCallback(async (page: number) => {
+    setIsLoadingWishes(true);
+
+    try {
+      const from = (page - 1) * wishesPerPage;
+      const to = from + wishesPerPage - 1;
+
+      const { data, count, error } = await supabase
+        .from("RSVP")
+        .select("*", { count: "exact" })
+        .neq("note", "")
+        .not("note", "is", null)
+        .order("created_at", { ascending: false })
+        .range(from, to);
+
+      if (error) {
+        console.error("Error fetching RSVPs:", error);
+        toast.error("Failed to load wishes.");
+        return;
+      }
+
+      if (data) {
+        setWishes(data.map((item) => mapRsvpToWish(item as RsvpRow)));
+      }
+
+      if (count !== null) {
+        setTotalPages(Math.ceil(count / wishesPerPage) || 1);
+      }
+    } catch (err) {
+      console.error("Error in fetchWishes:", err);
+      toast.error("Failed to load wishes.");
+    } finally {
+      setIsLoadingWishes(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void Promise.resolve().then(() => fetchWishes(currentPage));
+  }, [currentPage, fetchWishes]);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel("rsvp-realtime")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "RSVP" },
+        (payload) => {
+          const newRow = payload.new as Partial<RsvpRow> | null;
+
+          if (payload.eventType === "INSERT" && newRow?.note && currentPage !== 1) {
+            setCurrentPage(1);
+            return;
+          }
+
+          fetchWishes(currentPage);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [currentPage, fetchWishes]);
 
   useEffect(() => {
     const tick = () => setCountdown(getRemainingTime());
@@ -137,7 +222,7 @@ export default function Home() {
     section.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const submitRsvp = (event: FormEvent<HTMLFormElement>) => {
+  const submitRsvp = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!guestName.trim()) {
@@ -145,24 +230,52 @@ export default function Home() {
       return;
     }
 
-    if (wishesText.trim()) {
-      setWishes((current) => [
-        {
-          name: guestName.trim(),
-          attendance,
-          guests: guestCount,
-          message: wishesText.trim(),
-        },
-        ...current,
-      ]);
-    }
+    const newRsvp = {
+      name: guestName.trim(),
+      attendance: attendance === "Attend",
+      guest: attendance === "Attend" ? guestCount : 0,
+      note: wishesText.trim(),
+    };
 
-    toast.success("Thank you. Your RSVP has been captured on this demo page.");
-    scrollToSection("wishes")
-    setGuestName("");
-    setGuestCount(1);
-    setAttendance(defaultAttendance);
-    setWishesText("");
+    const loadingToast = toast.loading("Submitting your RSVP...");
+
+    try {
+      const { error } = await supabase
+        .from("RSVP")
+        .insert([newRsvp])
+        .select();
+
+      if (error) {
+        console.error("Error inserting RSVP:", error);
+        toast.dismiss(loadingToast);
+        if (error.code === "42501") {
+          toast.error("Row-Level Security violation. Public insert must be enabled on Supabase.");
+        } else {
+          toast.error(`Failed to submit RSVP: ${error.message}`);
+        }
+        return;
+      }
+
+      toast.dismiss(loadingToast);
+      toast.success("Thank you! Your RSVP has been submitted.");
+
+      setGuestName("");
+      setGuestCount(1);
+      setAttendance(defaultAttendance);
+      setWishesText("");
+
+      if (currentPage === 1) {
+        await fetchWishes(1);
+      } else {
+        setCurrentPage(1);
+      }
+
+      scrollToSection("wishes");
+    } catch (err) {
+      toast.dismiss(loadingToast);
+      console.error("Exception in submitRsvp:", err);
+      toast.error("An error occurred. Please try again.");
+    }
   };
 
   const copyText = async (value: string) => {
@@ -204,7 +317,7 @@ export default function Home() {
           onToggleMobileMenu={() => setMobileMenuOpen((s) => !s)}
         /> */}
         {/* Add audio */}
-        <audio autoPlay controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
+        <audio autoPlay loop controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
         </audio>
         <button
           onClick={toggleAudio}
@@ -221,7 +334,7 @@ export default function Home() {
 
         <main className="content-column relative flex-1">
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
-          <div className="elixir-background xl:w-4/12 right-0 ml-auto xl:ml-0" aria-hidden="true">
+          <div className="elixir-background xl:w-4/12 right-0 ml-auto" aria-hidden="true">
             <video
               autoPlay
               muted
@@ -275,13 +388,16 @@ export default function Home() {
             attendance={attendance}
             guestCount={guestCount}
             wishesText={wishesText}
-            submitMessage={submitMessage}
             wishes={wishes}
             onNameChange={setGuestName}
             onAttendanceChange={setAttendance}
             onGuestCountChange={(delta) => setGuestCount((c) => Math.max(1, Math.min(2, c + delta)))}
             onWishesTextChange={setWishesText}
             onSubmit={submitRsvp}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            isLoading={isLoadingWishes}
           />
 
           <GallerySection

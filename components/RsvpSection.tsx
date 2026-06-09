@@ -8,13 +8,16 @@ type RsvpProps = {
   attendance: string;
   guestCount: number;
   wishesText: string;
-  submitMessage: string;
   wishes: Wish[];
   onNameChange: (value: string) => void;
   onAttendanceChange: (value: string) => void;
   onGuestCountChange: (delta: number) => void;
   onWishesTextChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  isLoading: boolean;
 };
 
 const fadeUp = {
@@ -23,18 +26,30 @@ const fadeUp = {
   viewport: { once: true, amount: 0.24 },
 };
 
+const SkeletonWish = () => (
+  <article className="wish-item animate-pulse opacity-50">
+    <div>
+      <div style={{ height: "1.2rem", width: "30%", backgroundColor: "rgba(255, 255, 255, 0.15)", borderRadius: "4px", marginBottom: "0.5rem" }} />
+    </div>
+    <div style={{ height: "1rem", width: "80%", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "4px" }} />
+  </article>
+);
+
 export default function RsvpSection({
   guestName,
   attendance,
   guestCount,
   wishesText,
-  submitMessage,
   wishes,
   onNameChange,
   onAttendanceChange,
   onGuestCountChange,
   onWishesTextChange,
   onSubmit,
+  currentPage,
+  totalPages,
+  onPageChange,
+  isLoading,
 }: RsvpProps) {
   return (
     <>
@@ -112,7 +127,13 @@ export default function RsvpSection({
             <div className="divider" />
           </div>
 
-          {wishes.length ? (
+          {isLoading ? (
+            <div className="wishes-list max-h-[500px] overflow-y-auto">
+              {[...Array(5)].map((_, i) => (
+                <SkeletonWish key={i} />
+              ))}
+            </div>
+          ) : wishes.length ? (
             <div className="wishes-list max-h-[500px] overflow-y-auto">
               {wishes.map((wish, index) => (
                 <article key={`${wish.name}-${index}`} className="wish-item">
@@ -127,6 +148,30 @@ export default function RsvpSection({
             <p className="section-copy">
               Your blessings will appear here after submitting the RSVP form.
             </p>
+          )}
+
+          {!isLoading && totalPages > 1 && (
+            <div className="pagination-row">
+              <button
+                type="button"
+                className="pagination-btn"
+                disabled={currentPage === 1}
+                onClick={() => onPageChange(currentPage - 1)}
+              >
+                PREV
+              </button>
+              <span className="text-sm font-semibold text-white/75">
+                {currentPage} / {totalPages}
+              </span>
+              <button
+                type="button"
+                className="pagination-btn"
+                disabled={currentPage === totalPages}
+                onClick={() => onPageChange(currentPage + 1)}
+              >
+                NEXT
+              </button>
+            </div>
           )}
         </motion.div>
       </section>
