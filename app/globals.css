@@ -526,7 +526,7 @@ img {
 .person-vertical-label {
   position: absolute;
   left: 1.5rem;
-  top: 20%;
+  top: 25%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left top;
   color: rgba(255, 255, 255, 0.72);
@@ -1000,19 +1000,20 @@ img {
   color: #fff;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.6rem;
 }
 
 .field input,
 .field textarea,
 .field select {
   width: 100%;
-  padding: 0.95rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid #b3b3b3;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.04);
   color: var(--foreground);
   outline: none;
+  font-size: 0.7rem;
 }
 
 .field input::placeholder,
@@ -1047,12 +1048,12 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
 }
 
 .radio-pill input:checked+span {
@@ -1100,9 +1101,10 @@ img {
 }
 
 .wish-item {
-  padding: 0.5rem 1.1rem;
-  border-bottom: 2px solid var(--muted);
-  background: rgba(255, 255, 255, 0.03);
+  /* border-bottom: 2px solid var(--muted); */
+  background: #ffffff2e;
+  padding: .2rem 1rem;
+  border-radius: 15px;
 }
 
 .wish-name {
@@ -1117,7 +1119,8 @@ img {
 }
 
 .wish-message {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: .9rem;
 }
 
 .gallery-title-block {
@@ -1762,9 +1765,12 @@ img {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 0.8;
   }

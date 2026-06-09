@@ -53,7 +53,7 @@ export default function RsvpSection({
 }: RsvpProps) {
   return (
     <>
-      <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start" }}>
+      <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start", paddingTop: "2rem" }}>
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card">
           <SectionHeader eyebrow="RSVP" />
           <h2 className="section-heading" style={{ margin: "1rem 0", fontSize: "2rem" }}>WILL YOU ATTEND?</h2>
