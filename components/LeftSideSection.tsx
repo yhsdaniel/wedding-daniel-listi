@@ -1,6 +1,5 @@
 import { belgantFont } from '@/app/fonts'
 import { coverImage } from '@/lib/invitationData'
-import React from 'react'
 
 export default function LeftSideSection() {
     return (

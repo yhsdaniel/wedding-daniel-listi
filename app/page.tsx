@@ -37,10 +37,12 @@ import LeftSideSection from "@/components/LeftSideSection";
 import LoveStorySection from "@/components/LoveStorySection";
 
 import { Playfair_Display, Roboto } from 'next/font/google'
-import { belgantFont } from "./fonts";
 import CoupleSection from "@/components/CoupleSection";
 import toast from "react-hot-toast";
 import Preloader from "@/components/Preloader";
+import LastSection from "@/components/LastSection";
+import Cover from "@/components/Cover";
+import FirstSection from "@/components/FirstSection";
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
 
@@ -347,27 +349,8 @@ export default function Home() {
             </video>
             <div className="background-overlay" />
           </div>
-          <section id="home" data-section className="snap-section hero-card w-full flex justify-between items-center">
-            <div className="content-card hero-card text-center">
-              <div className="card-eyebrow reanimate fade">THE WEDDING OF</div>
-              <div className="cover-title-block">
-                <span className="cover-ghost reanimate fade delay-2">D L</span>
-                <h1 className="cover-title reanimate fade delay-3">Daniel</h1>
-                <h1 className="cover-title reanimate fade delay-4">Listi</h1>
-              </div>
-              <p className="section-copy text-sm reanimate up delay-5">
-                We&apos;re delighted to invite you to our celebration.
-              </p>
-            </div>
-            {/* Scroll Indicator */}
-            <div className="scroll-indicator">
-              <span>SCROLL</span>
-              <div className="scroll-indicator-arrow">
-                <ChevronDown size={14} strokeWidth={2} />
-                <ChevronDown size={14} strokeWidth={2} className="-mt-1" />
-              </div>
-            </div>
-          </section>
+
+          <FirstSection />
 
           <QuotesSection />
 
@@ -416,89 +399,17 @@ export default function Home() {
             onCopy={copyText}
           />
 
-          <section id="closing" data-section className="snap-section bg-cover bg-center" style={{
-            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42)), url(${closingImage})`,
-          }}>
-            <div className="content-card closing-card h-full flex flex-col justify-between" style={{ paddingTop: "5rem", paddingBottom: "5rem" }}>
-              <motion.h2
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false, amount: 0.25 }}
-                transition={{ duration: 0.75, delay: 0.2 }}
-                className="section-heading reanimate fade">WITH HEARTFELT GRATITUDE FOR YOUR PRESENCE AND BLESSINGS
-              </motion.h2>
-              <div>
-                <motion.h3
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: false, amount: 0.25 }}
-                  transition={{ duration: 0.75, delay: 0.4 }}
-                  className="closing-names my-4" style={{ fontSize: "2rem" }}>
-                  Daniel &amp; Listi
-                </motion.h3>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: false, amount: 0.25 }}
-                  transition={{ duration: 0.75, delay: 0.6 }}
-                  className="my-4 text-sm text-white/80">
-                  We can&apos;t wait to share this special moment with you. Your
-                  presence will make our day even more meaningful.
-                </motion.p>
-              </div>
-            </div>
-          </section>
+          <LastSection />
         </main>
       </div>
 
       <AnimatePresence>
-        {!invitationOpen && (
-          <motion.div
-            initial={{ opacity: 1, visibility: "visible" }}
-            animate={{ opacity: 1, visibility: "visible" }}
-            exit={{ opacity: 0, visibility: "hidden" }}
-            transition={{ duration: 0.75, ease: "easeInOut" }}
-            className="fixed size-full z-50 overflow-hidden"
-          >
-            <div
-              className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
-              style={{
-                backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18) 60%, rgba(0, 0, 0, 0.76)), url(${coverImage})`,
-              }}
-            >
-              <div className="flex flex-col items-center gap-4">
-                <p className="text-white">THE WEDDING OF</p>
-                <div className="cover-title-block text-left">
-                  <h1 className={`${belgantFont.className}`}>Daniel</h1>
-                  <h1 className={`${belgantFont.className} text-white/40 absolute -top-4 translate-y-[50%] -right-4`} style={{ fontSize: "6rem" }}>&</h1>
-                  <h1 className={`${belgantFont.className}`}>Listi</h1>
-                </div>
-                <p className="text-white text-sm">SATURDAY, 30 / 01 / 2027</p>
-              </div>
-              <div className="flex flex-col items-center gap-1">
-                <p className="text-white">
-                  Dear,
-                </p>
-                <div className="flex justify-center items-center text-white border-b border-white w-60 h-8">Saudara</div>
-                <p className="text-white italic text-xs my-2">
-                  We apologize if there is any misspelling of name or title.
-                </p>
-                <button
-                  type="button"
-                  className="pill-button cover-button"
-                  onClick={() => {
-                    setInvitationOpen(true);
-                    audioRef.current?.play();
-                    setIsVisible(true);
-                  }}
-                >
-                  <Mail className="w-4 h-4 mr-2" />
-                  OPEN INVITATION
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
+        <Cover
+          invitationOpen={invitationOpen}
+          setInvitationOpen={setInvitationOpen}
+          audioRef={audioRef}
+          setIsVisible={setIsVisible}
+        />
       </AnimatePresence>
 
       {lightbox ? <Lightbox item={lightbox} onClose={closeLightbox} /> : null}
