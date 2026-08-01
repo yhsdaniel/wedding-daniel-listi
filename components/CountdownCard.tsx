@@ -59,7 +59,7 @@ export default function CountdownCard({ countdown, calendarUrl }: CountdownProps
             key={index}
             className={`flex flex-col reanimate up delay-${Math.min(index + 2, 6)}`}
           >
-            <span className="text-xl">00</span>
+            <span className="text-xl">{item.value}</span>
             <small>{item.label}</small>
           </div>
         ))}

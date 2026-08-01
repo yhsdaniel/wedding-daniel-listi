@@ -7,7 +7,7 @@ import {
   MenuItem,
 } from "@/app/types";
 
-export const targetDate = new Date("2027-01-30T12:00:00+07:00");
+export const targetDate = new Date("2027-01-30T12:00:00+02:00");
 
 export const heroImage =
   "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
@@ -160,7 +160,7 @@ export const weddingGiftCards = [
 ];
 
 export const calendarUrl =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20Wedding%20of%20Daniel%20%26%20Listi&dates=20270130T050000Z/20270130T140000Z&details=Join%20our%20celebration%20for%20Daniel%20%26%20Listi&location=Maria%20Bunda%20Karmel%20Church";
+  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=The%20Wedding%20of%20Daniel%20%26%20Listi&dates=20270130T050000Z/20270130T070000Z&details=Join%20our%20celebration%20for%20Daniel%20%26%20Listi&location=Maria%20Bunda%20Karmel%20Church";
 
 export function getRemainingTime() {
   const distance = targetDate.getTime() - Date.now();

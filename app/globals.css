@@ -106,6 +106,7 @@ img {
 
 .elixir-background {
   z-index: -2;
+  margin-left: auto;
 }
 
 .background-video {
