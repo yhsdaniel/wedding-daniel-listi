@@ -71,7 +71,12 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [giftOpen, setGiftOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [countdown, setCountdown] = useState(getRemainingTime);
+  const [countdown, setCountdown] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+  });
   const [attendance, setAttendance] = useState(defaultAttendance);
   const [guestCount, setGuestCount] = useState(1);
   const [guestName, setGuestName] = useState("");
@@ -336,7 +341,7 @@ export default function Home() {
 
         <main className="content-column relative flex-1">
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
-          <div className="elixir-background xl:w-4/12 right-0 ml-auto" aria-hidden="true">
+          <div className="elixir-background xl:w-4/12" style={{ marginLeft: 'auto' }} aria-hidden="true">
             <video
               autoPlay
               muted

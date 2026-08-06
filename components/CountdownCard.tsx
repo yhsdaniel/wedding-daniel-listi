@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import CountdownServer from "./CountdownServer";
 
 type CountdownProps = {
   countdown: {
@@ -54,7 +55,8 @@ export default function CountdownCard({ countdown, calendarUrl }: CountdownProps
         ALMOST TIME FOR OUR CELEBRATION
       </OpeningHeading>
       <OpeningHeading className="flex gap-6 w-full my-6" delay={0.4}>
-        {countdownItems.map((item, index) => (
+        <CountdownServer countdown={countdown} />
+        {/* {countdownItems.map((item, index) => (
           <div
             key={index}
             className={`flex flex-col reanimate up delay-${Math.min(index + 2, 6)}`}
@@ -62,7 +64,7 @@ export default function CountdownCard({ countdown, calendarUrl }: CountdownProps
             <span className="text-xl">{item.value}</span>
             <small>{item.label}</small>
           </div>
-        ))}
+        ))} */}
       </OpeningHeading>
       <motion.a
         initial={{ opacity: 0 }}

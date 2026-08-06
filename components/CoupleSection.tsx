@@ -66,7 +66,7 @@ export default function CoupleSection() {
                             viewport={{ once: false, amount: 0.25 }}
                             transition={{ duration: 0.75, delay: 0.8 }}
                         >
-                            Mr. Johan Andrianto / Lo Swie Djiang (Father) &amp; Mrs. Heri Pebruariningsih / Lie Pik Tjiam (Mother)
+                            Mr. Johan A. / Lo Swie Djiang (Father) <br /> Mrs. Heri P. / Lie Pik Tjiam (Mother)
                         </motion.p>
                         <motion.a
                             initial={{ opacity: 0 }}
@@ -82,7 +82,7 @@ export default function CoupleSection() {
                         </motion.a>
                     </div>
                 </article>
-            </section>
+            </section >
 
             <section id="couple-bride" data-section className="snap-section">
                 <article
@@ -126,7 +126,7 @@ export default function CoupleSection() {
                             viewport={{ once: false, amount: 0.25 }}
                             transition={{ duration: 0.75, delay: 0.8 }}
                         >
-                            Mr. Jaka Musada / Tan Tian Liong (Father) &amp; Mrs. Muflihah (Mother)
+                            Mr. Jaka M. / Tan Tian Liong (Father) <br /> Mrs. Muflihah (Mother)
                         </motion.p>
                         <motion.a
                             initial={{ opacity: 0 }}

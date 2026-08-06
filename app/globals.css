@@ -1389,8 +1389,8 @@ img {
   /* padding: 2rem 1.5rem; */
   border: 1px solid var(--line);
   /* border-radius: 2rem; */
-  background-position: center center;
-  background-size: cover;
+  background-position: center;
+  background-size: inherit;
   text-align: center;
   box-shadow: var(--shadow);
 }
