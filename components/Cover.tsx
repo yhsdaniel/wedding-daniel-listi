@@ -2,6 +2,7 @@ import { belgantFont } from '@/app/fonts';
 import { coverImage } from '@/lib/invitationData';
 import { Mail } from 'lucide-react';
 import { motion } from "framer-motion";
+import { useSearchParams } from 'next/navigation';
 
 type CoverProps = {
     invitationOpen: boolean;
@@ -11,6 +12,9 @@ type CoverProps = {
 }
 
 export default function Cover({ invitationOpen, setInvitationOpen, audioRef, setIsVisible }: CoverProps) {
+    const searchParams = useSearchParams();
+    const guestName = searchParams.get('q');
+
     return (
         <>
             {!invitationOpen && (
@@ -40,7 +44,9 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                             <p className="text-white">
                                 Dear,
                             </p>
-                            <div className="flex justify-center items-center text-white border-b border-white w-60 h-8">Saudara</div>
+                            <div className="flex justify-center items-center text-white border-b border-white w-60 h-8 text-center px-4 overflow-hidden text-ellipsis whitespace-nowrap">
+                                {guestName}
+                            </div>
                             <p className="text-white italic text-xs my-2">
                                 We apologize if there is any misspelling of name or title.
                             </p>

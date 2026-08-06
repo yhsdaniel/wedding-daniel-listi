@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState, Suspense } from "react";
 import { GalleryItem, Wish } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { Mail, Pause, Play } from "lucide-react";
@@ -409,12 +409,14 @@ export default function Home() {
       </div>
 
       <AnimatePresence>
-        <Cover
-          invitationOpen={invitationOpen}
-          setInvitationOpen={setInvitationOpen}
-          audioRef={audioRef}
-          setIsVisible={setIsVisible}
-        />
+        <Suspense fallback={null}>
+          <Cover
+            invitationOpen={invitationOpen}
+            setInvitationOpen={setInvitationOpen}
+            audioRef={audioRef}
+            setIsVisible={setIsVisible}
+          />
+        </Suspense>
       </AnimatePresence>
 
       {lightbox ? <Lightbox item={lightbox} onClose={closeLightbox} /> : null}
