@@ -88,20 +88,16 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoadingWishes, setIsLoadingWishes] = useState(false);
 
-  const fetchWishes = useCallback(async (page: number) => {
+  const fetchWishes = useCallback(async () => {
     setIsLoadingWishes(true);
 
     try {
-      const from = (page - 1) * wishesPerPage;
-      const to = from + wishesPerPage - 1;
-
       const { data, count, error } = await supabase
         .from("RSVP")
         .select("*", { count: "exact" })
         .neq("note", "")
         .not("note", "is", null)
-        .order("created_at", { ascending: false })
-        .range(from, to);
+        .order("created_at", { ascending: false });
 
       if (error) {
         console.error("Error fetching RSVPs:", error);
@@ -112,10 +108,6 @@ export default function Home() {
       if (data) {
         setWishes(data.map((item) => mapRsvpToWish(item as RsvpRow)));
       }
-
-      if (count !== null) {
-        setTotalPages(Math.ceil(count / wishesPerPage) || 1);
-      }
     } catch (err) {
       console.error("Error in fetchWishes:", err);
       toast.error("Failed to load wishes.");
@@ -125,8 +117,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    void Promise.resolve().then(() => fetchWishes(currentPage));
-  }, [currentPage, fetchWishes]);
+    void Promise.resolve().then(() => fetchWishes());
+  }, [fetchWishes]);
 
   useEffect(() => {
     const channel = supabase
@@ -135,14 +127,7 @@ export default function Home() {
         "postgres_changes",
         { event: "*", schema: "public", table: "RSVP" },
         (payload) => {
-          const newRow = payload.new as Partial<RsvpRow> | null;
-
-          if (payload.eventType === "INSERT" && newRow?.note && currentPage !== 1) {
-            setCurrentPage(1);
-            return;
-          }
-
-          fetchWishes(currentPage);
+          fetchWishes();
         },
       )
       .subscribe();
@@ -150,7 +135,7 @@ export default function Home() {
     return () => {
       void supabase.removeChannel(channel);
     };
-  }, [currentPage, fetchWishes]);
+  }, [fetchWishes]);
 
   useEffect(() => {
     const tick = () => setCountdown(getRemainingTime());
@@ -271,11 +256,7 @@ export default function Home() {
       setAttendance(defaultAttendance);
       setWishesText("");
 
-      if (currentPage === 1) {
-        await fetchWishes(1);
-      } else {
-        setCurrentPage(1);
-      }
+      await fetchWishes();
 
       scrollToSection("wishes");
     } catch (err) {

@@ -628,7 +628,7 @@ img {
   gap: 0.5rem;
   margin-top: 1rem;
   padding-right: 2rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: italic;
 }
 
@@ -1103,14 +1103,16 @@ img {
 
 .wish-item {
   /* border-bottom: 2px solid var(--muted); */
-  background: #ffffff2e;
-  padding: .2rem 1rem;
-  border-radius: 15px;
+  background: #ffffff2f;
+  padding: .5rem 1rem;
+  border: 1px solid #fff
+    /* border-radius: 15px; */
 }
 
 .wish-name {
-  color: var(--foreground);
+  color: #fff;
   font-weight: 700;
+  font-size: 0.8rem;
 }
 
 .wish-meta {
@@ -1120,8 +1122,9 @@ img {
 }
 
 .wish-message {
+  color: #fff;
   margin-top: 0.5rem;
-  font-size: .9rem;
+  font-size: .7rem;
 }
 
 .gallery-title-block {

@@ -44,7 +44,7 @@ export default function QuotesSection() {
                             <h2 className={`${cherish.className} absolute top-3 left-6 m-0 text-[6rem] italic leading-none text-white opacity-50`}>
                                 &
                             </h2>
-                            <h2 
+                            <h2
                                 className="belgantFont absolute m-0 -bottom-0 -right-5 text-[7rem] leading-none text-white"
                             >
                                 L
@@ -53,8 +53,9 @@ export default function QuotesSection() {
                     </OpeningHeading>
 
                     <OpeningHeading delay={0.4}>
-                        <p className="whitespace-nowrap text-sm tracking-[0.2em] text-white font-bold">
-                            #DelightwithLove
+                        <p className="whitespace-nowrap text-lg tracking-[0.2em] text-white font-bold">
+                            {/* #DelightwithLove */}
+                            #ourDASTIny
                         </p>
                     </OpeningHeading>
 

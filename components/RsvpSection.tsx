@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Wish } from "@/app/types";
 import SectionHeader from "@/components/SectionHeader";
@@ -51,6 +51,71 @@ export default function RsvpSection({
   onPageChange,
   isLoading,
 }: RsvpProps) {
+  const [paginatedWishes, setPaginatedWishes] = useState<Wish[][]>([]);
+  const [localPage, setLocalPage] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!wishes || wishes.length === 0) {
+      setPaginatedWishes([]);
+      return;
+    }
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const measureContainer = document.createElement("div");
+    measureContainer.className = "wishes-list";
+    measureContainer.style.position = "absolute";
+    measureContainer.style.visibility = "hidden";
+    measureContainer.style.pointerEvents = "none";
+    measureContainer.style.width = "100%";
+    measureContainer.style.top = "0";
+    measureContainer.style.left = "0";
+
+    container.appendChild(measureContainer);
+
+    const pages: Wish[][] = [];
+    let currentPageWishes: Wish[] = [];
+    let currentHeight = 0;
+    const maxHeight = 450; // max height per page in px before moving to next
+
+    for (const wish of wishes) {
+      const article = document.createElement("article");
+      article.className = "wish-item";
+      article.innerHTML = `<div><p class="wish-name">${wish.name}</p></div><p class="wish-message">${wish.message}</p>`;
+
+      measureContainer.appendChild(article);
+      const height = article.offsetHeight;
+      const margin = 16; // approximate gap between items
+      measureContainer.removeChild(article);
+
+      if (currentHeight + height + margin > maxHeight && currentPageWishes.length > 0) {
+        pages.push(currentPageWishes);
+        currentPageWishes = [wish];
+        currentHeight = height;
+      } else {
+        currentPageWishes.push(wish);
+        currentHeight += height + margin;
+      }
+    }
+
+    if (currentPageWishes.length > 0) {
+      pages.push(currentPageWishes);
+    }
+
+    container.removeChild(measureContainer);
+    setPaginatedWishes(pages);
+
+    setLocalPage(prev => {
+      if (prev > pages.length) return Math.max(1, pages.length);
+      return prev;
+    });
+  }, [wishes]);
+
+  const currentWishes = paginatedWishes[localPage - 1] || [];
+  const totalLocalPages = Math.max(1, paginatedWishes.length);
+
   return (
     <>
       <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start", paddingTop: "2rem" }}>
@@ -121,7 +186,7 @@ export default function RsvpSection({
       </section>
 
       <section id="wishes" data-section className="snap-section" style={{ alignItems: "start" }}>
-        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card">
+        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card" ref={containerRef} style={{ position: "relative" }}>
           <div className="section-header">
             <p className="card-eyebrow">WISHES</p>
             <div className="divider" />
@@ -135,7 +200,7 @@ export default function RsvpSection({
             </div>
           ) : wishes.length ? (
             <div className="wishes-list max-h-[500px] overflow-y-auto">
-              {wishes.map((wish, index) => (
+              {currentWishes.map((wish, index) => (
                 <article key={`${wish.name}-${index}`} className="wish-item">
                   <div>
                     <p className="wish-name">{wish.name}</p>
@@ -150,24 +215,24 @@ export default function RsvpSection({
             </p>
           )}
 
-          {!isLoading && totalPages > 1 && (
+          {!isLoading && totalLocalPages > 1 && (
             <div className="pagination-row">
               <button
                 type="button"
                 className="pagination-btn"
-                disabled={currentPage === 1}
-                onClick={() => onPageChange(currentPage - 1)}
+                disabled={localPage === 1}
+                onClick={() => setLocalPage(localPage - 1)}
               >
                 PREV
               </button>
               <span className="text-sm font-semibold text-white/75">
-                {currentPage} / {totalPages}
+                {localPage} / {totalLocalPages}
               </span>
               <button
                 type="button"
                 className="pagination-btn"
-                disabled={currentPage === totalPages}
-                onClick={() => onPageChange(currentPage + 1)}
+                disabled={localPage === totalLocalPages}
+                onClick={() => setLocalPage(localPage + 1)}
               >
                 NEXT
               </button>

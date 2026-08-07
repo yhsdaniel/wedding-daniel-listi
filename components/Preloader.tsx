@@ -11,7 +11,7 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
 
         if (!isVisible || hasExecuted.current) return;
         hasExecuted.current = true;
-        
+
         document.body.style.overflow = "hidden";
 
         const handleHide = () => {
@@ -97,8 +97,9 @@ export default function Preloader({ isVisible, setIsVisible }: { isVisible: bool
 
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[calc(50%+45px)] overflow-hidden h-20">
                         <div className="relative top-24 flex flex-row justify-center px-[100px] text-white font-normal text-[100px] leading-[90px] font-belgan animate-initials">
-                            <span>D</span>
-                            <span className="ml-0">L</span>
+                            {/* <span>D</span>
+                            <span className="ml-0">L</span> */}
+                            <span className="text-3xl">#ourDASTIny</span>
                         </div>
                     </div>
 
