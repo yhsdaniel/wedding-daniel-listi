@@ -37,7 +37,7 @@ export default function QuotesSection() {
                     <OpeningHeading delay={0.2}>
                         <div className="relative w-[120px] h-[160px]">
                             <h2
-                                className="belgantFont absolute m-0 -left-5 -top-5 text-[7rem] leading-none text-white"
+                                className="belgantFont absolute m-0 -left-2 -top-5 text-[7rem] leading-none text-white"
                             >
                                 D
                             </h2>
@@ -45,7 +45,7 @@ export default function QuotesSection() {
                                 &
                             </h2>
                             <h2
-                                className="belgantFont absolute m-0 -bottom-0 -right-5 text-[7rem] leading-none text-white"
+                                className="belgantFont absolute m-0 -bottom-0 -right-2 text-[7rem] leading-none text-white"
                             >
                                 L
                             </h2>
@@ -53,7 +53,7 @@ export default function QuotesSection() {
                     </OpeningHeading>
 
                     <OpeningHeading delay={0.4}>
-                        <p className="whitespace-nowrap text-lg tracking-[0.2em] text-white font-bold">
+                        <p className="whitespace-nowrap italic text-lg tracking-[0.2em] text-white font-bold">
                             {/* #DelightwithLove */}
                             #ourDASTIny
                         </p>

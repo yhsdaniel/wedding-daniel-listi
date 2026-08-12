@@ -12,7 +12,7 @@ export default function FirstSection() {
                     <h1 className="cover-title reanimate fade delay-4">Listi</h1>
                 </div>
                 <p className="section-copy text-sm reanimate up delay-5">
-                    We&apos;re delighted to invite you to our celebration.
+                    We&apos;re delighted to invite you to our wedding.
                 </p>
             </div>
             {/* Scroll Indicator */}

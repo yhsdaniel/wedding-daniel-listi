@@ -305,7 +305,7 @@ export default function Home() {
           onToggleMobileMenu={() => setMobileMenuOpen((s) => !s)}
         /> */}
         {/* Add audio */}
-        <audio autoPlay loop controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
+        <audio loop controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
         </audio>
         <button
           onClick={toggleAudio}
@@ -369,13 +369,6 @@ export default function Home() {
             isLoading={isLoadingWishes}
           />
 
-          <GallerySection
-            topGallery={topGallery}
-            bottomGallery={bottomGallery}
-            playIcon={playIcon}
-            onOpenLightbox={openLightbox}
-          />
-
           <GiftSection
             giftOpen={giftOpen}
             toggleGiftOpen={toggleGiftOpen}
@@ -384,6 +377,14 @@ export default function Home() {
             giftImage={giftImage}
             onCopy={copyText}
           />
+
+          <GallerySection
+            topGallery={topGallery}
+            bottomGallery={bottomGallery}
+            playIcon={playIcon}
+            onOpenLightbox={openLightbox}
+          />
+
 
           <LastSection />
         </main>
