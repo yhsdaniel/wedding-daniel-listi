@@ -53,7 +53,7 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                                 <p className="belgantFont text-white text-xl my-2 font-bold">Awal Mula</p>
                                 <p className="section-copy text-white text-sm">
                                     Semuanya dimulai dari obrolan ringan yang ternyata nyambung. Dari sekadar membahas hal-hal sepele, kita perlahan mulai terbuka—berbagi rencana masa depan, sampai menertawakan hal-hal receh berdua.
-                                    Sekarang, setelah banyak hal yang kita rencanakan dan lewati bareng, ada satu hal yang pasti. Berada di dekatmu rasanya tenang.
+                                    Berada di dekatmu rasanya tenang.
                                     Selelah apa pun hari yang kulewati di luar sana, ada di sampingmu selalu terasa seperti pulang ke rumah.
                                 </p>
                             </div>
@@ -84,7 +84,7 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                                 </p> */}
                                 <p className="belgantFont text-white text-xl my-2 font-bold">Sebuah Janji untuk Selamanya</p>
                                 <p className="section-copy text-white text-sm">
-                                    Kini, dengan hati yang penuh sukacita dan tatapan penuh harapan, kami melangkah menuju babak selanjutnya.
+                                    Kini, dengan hati yang penuh sukacita dan tatapan penuh harapan, kami melangkah menuju tahap selanjutnya.
                                     Pernikahan ini bukan sekadar perayaan untuk satu hari saja, melainkan perayaan atas sebuah perjalanan, sebuah janji
                                     dan cinta yang begitu berharga bagi kami berdua.
                                 </p>
