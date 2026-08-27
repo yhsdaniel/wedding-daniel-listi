@@ -11,8 +11,6 @@ type CoverProps = {
     setIsVisible: (value: boolean) => void;
 }
 
-export const coverImg = "/images/cover.jpg"
-
 export default function Cover({ invitationOpen, setInvitationOpen, audioRef, setIsVisible }: CoverProps) {
     const searchParams = useSearchParams();
     const guestName = searchParams.get('q');
@@ -30,7 +28,7 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                     <div
                         className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
                         style={{
-                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18) 60%, rgba(0, 0, 0, 0.76)), url('${coverImg}')`,
+                            backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.18) 60%, rgba(0, 0, 0, 0.76)), url('${coverImage}')`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
                             backgroundPosition: "center 40%",
