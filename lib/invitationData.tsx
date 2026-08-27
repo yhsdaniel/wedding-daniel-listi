@@ -13,7 +13,7 @@ export const heroImage =
   "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
 export const coverImage =
   // "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
-  "./images/cover.jpg";
+  "/images/cover.jpg";
 export const storyImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_ovXEMCwF-1024x683.jpg";
 export const groomImage =
