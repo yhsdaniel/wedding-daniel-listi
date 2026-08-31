@@ -723,6 +723,7 @@ img {
   font-size: 0.74rem;
   font-weight: 700;
   backdrop-filter: blur(2px);
+  box-shadow: 1px 1px 5px #fff;
 }
 
 .pill-button.secondary {
@@ -735,6 +736,16 @@ img {
 .hero-menu-link:hover,
 .mobile-menu-button:hover {
   transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.pill-button:active,
+.text-button:active,
+.icon-button:active,
+.hero-menu-link:active,
+.mobile-menu-button:active {
+  transform: translateY(-1px);
+  box-shadow: none;
 }
 
 .event-grid {

@@ -14,6 +14,7 @@ export const heroImage =
 // export const coverImage =
 //   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
 export const coverImage = "/images/sampul.jpg"
+export const coverImage2 = "/images/sampul2.jpg"
 export const storyImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_ovXEMCwF-1024x683.jpg";
 export const groomImage =

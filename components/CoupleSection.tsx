@@ -26,7 +26,7 @@ export default function CoupleSection() {
         <>
             <section id="couple-groom" data-section className="snap-section">
                 <article
-                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg')]"
+                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://res.cloudinary.com/q1kpnykw/image/upload/v1788171456/groom.jpg')]"
                 >
                     <div className="person-vertical-label">
                         THE GROOM
@@ -86,7 +86,7 @@ export default function CoupleSection() {
 
             <section id="couple-bride" data-section className="snap-section">
                 <article
-                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg')]"
+                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/bride.jpg')]"
                 >
                     <div className="person-vertical-label">
                         THE BRIDE

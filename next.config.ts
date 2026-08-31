@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-   images: {
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
         hostname: 'wp.envelope.id', // need 2 url links for different image sources
       },
     ],
+    domains: ['res.cloudinary.com']
   },
 };
 

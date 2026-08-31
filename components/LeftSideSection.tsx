@@ -1,5 +1,5 @@
 import { belgantFont } from '@/app/fonts'
-import { coverImage } from '@/lib/invitationData'
+import { coverImage2 } from '@/lib/invitationData'
 
 export default function LeftSideSection() {
     return (
@@ -7,7 +7,7 @@ export default function LeftSideSection() {
             <div
                 className="size-full flex flex-col justify-start items-start gap-8 text-left p-10 bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.18) 70%, rgba(0, 0, 0, 0.76)), url(${coverImage})`,
+                    backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.18) 70%, rgba(0, 0, 0, 0.76)), url(${coverImage2})`,
                 }}
             >
                 <p className="text-white">THE WEDDING OF</p>
