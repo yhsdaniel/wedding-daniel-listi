@@ -20,8 +20,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'wp.envelope.id', // need 2 url links for different image sources
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
-    domains: ['res.cloudinary.com']
   },
 };
 

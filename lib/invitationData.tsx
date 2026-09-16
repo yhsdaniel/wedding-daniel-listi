@@ -18,9 +18,9 @@ export const coverImage2 = "/images/sampul2.jpg"
 export const storyImage =
   "/images/story.jpg";
 export const groomImage =
-  "https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/groom.jpg";
 export const brideImage =
-  "https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/bride.jpg";
 export const giftImage =
   "/images/wedding-gift.jpg";
 export const closingImage =
@@ -65,38 +65,38 @@ export const topGallery: ImageGalleryItem[] = [
   {
     type: "image",
     thumb:
-      "/images/gallery_1.jpg",
-    full: "/images/gallery_1.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_1.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_1.jpg",
     alt: "Daniel and Listi portrait one",
   },
   {
     type: "image",
     thumb:
-      "/images/gallery_2.jpg",
-    full: "/images/gallery_2.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_2.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_2.jpg",
     alt: "Daniel and Listi portrait two",
   },
   {
     type: "image",
     thumb:
-      "/images/gallery_3.jpg",
-    full: "/images/gallery_3.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_3.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_3.jpg",
     alt: "Daniel and Listi portrait three",
   },
   {
     type: "image",
     thumb:
-      "/images/gallery_4.jpg",
-    full: "/images/gallery_4.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_4.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_4.jpg",
     alt: "Daniel and Listi portrait four",
   },
-  {
-    type: "image",
-    thumb:
-      "/images/gallery_5.jpg",
-    full: "/images/gallery_5.jpg",
-    alt: "Daniel and Listi portrait five",
-  },
+  // {
+  //   type: "image",
+  //   thumb:
+  //     "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_5.jpg",
+  //   full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_5.jpg",
+  //   alt: "Daniel and Listi portrait five",
+  // },
 ];
 
 export const bottomGallery: GalleryItem[] = [
@@ -108,36 +108,36 @@ export const bottomGallery: GalleryItem[] = [
   {
     type: "image",
     thumb:
-      "/images/gallery_6.jpg",
-    full: "/images/gallery_6.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_6.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_6.jpg",
     alt: "Daniel and Listi portrait six",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_24_1770794542.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_24_1770794542.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_7.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_7.jpg",
     alt: "Daniel and Listi portrait seven",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_29_1770794557.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_29_1770794557.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_8.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_8.jpg",
     alt: "Daniel and Listi portrait eight",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_7_1770794487.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_7_1770794487.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_9.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_9.jpg",
     alt: "Daniel and Listi portrait nine",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_6_1770794482.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_6_1770794482.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_10.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1788171464/gallery_10.jpg",
     alt: "Daniel and Listi portrait ten",
   },
 ];

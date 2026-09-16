@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react'
 import { motion } from "framer-motion";
+import { groomImage, brideImage } from '@/lib/invitationData';
+
 
 type OpeningHeadingProps = {
     children: ReactNode;
@@ -26,7 +28,8 @@ export default function CoupleSection() {
         <>
             <section id="couple-groom" data-section className="snap-section">
                 <article
-                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('https://res.cloudinary.com/q1kpnykw/image/upload/v1788171456/groom.jpg')]"
+                    className="relative h-screen w-full overflow-hidden bg-cover bg-center"
+                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%), url(${groomImage})` }}
                 >
                     <div className="person-vertical-label">
                         THE GROOM
@@ -86,7 +89,8 @@ export default function CoupleSection() {
 
             <section id="couple-bride" data-section className="snap-section">
                 <article
-                    className="relative h-screen w-full overflow-hidden bg-cover bg-center bg-[image:linear-gradient(180deg,_#00000000_0%,_#000000CC_100%),_url('/images/bride.jpg')]"
+                    className="relative h-screen w-full overflow-hidden bg-cover bg-center"
+                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%), url(${brideImage})` }}
                 >
                     <div className="person-vertical-label">
                         THE BRIDE
