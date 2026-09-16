@@ -16,15 +16,15 @@ export const heroImage =
 export const coverImage = "/images/sampul.jpg"
 export const coverImage2 = "/images/sampul2.jpg"
 export const storyImage =
-  "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_ovXEMCwF-1024x683.jpg";
+  "/images/story.jpg";
 export const groomImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/hansen.jpg";
 export const brideImage =
   "https://wp.envelope.id/wp-content/uploads/2026/02/kezia.jpg";
 export const giftImage =
-  "https://wp.envelope.id/wp-content/uploads/2025/11/inv_787_mqiDhs4a.jpg";
+  "/images/wedding-gift.jpg";
 export const closingImage =
-  "https://wp.envelope.id/wp-content/uploads/2025/11/inv_787_MIT1VLqF.jpg";
+  "/images/penutup.jpg";
 export const backgroundVideo =
   "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
 export const framePreview =
@@ -65,37 +65,37 @@ export const topGallery: ImageGalleryItem[] = [
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_18_1770794525.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_18_1770794525.jpg",
-    alt: "Hansen and Kezia portrait one",
+      "/images/gallery_1.jpg",
+    full: "/images/gallery_1.jpg",
+    alt: "Daniel and Listi portrait one",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_16_1770794522.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_16_1770794522.jpg",
-    alt: "Hansen and Kezia portrait two",
+      "/images/gallery_2.jpg",
+    full: "/images/gallery_2.jpg",
+    alt: "Daniel and Listi portrait two",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_31_1770794565.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_31_1770794565.jpg",
-    alt: "Hansen and Kezia portrait three",
+      "/images/gallery_3.jpg",
+    full: "/images/gallery_3.jpg",
+    alt: "Daniel and Listi portrait three",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_20_1770794532.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_20_1770794532.jpg",
-    alt: "Hansen and Kezia portrait four",
+      "/images/gallery_4.jpg",
+    full: "/images/gallery_4.jpg",
+    alt: "Daniel and Listi portrait four",
   },
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_17_1770794523.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_17_1770794523.jpg",
-    alt: "Hansen and Kezia portrait five",
+      "/images/gallery_5.jpg",
+    full: "/images/gallery_5.jpg",
+    alt: "Daniel and Listi portrait five",
   },
 ];
 
@@ -108,37 +108,37 @@ export const bottomGallery: GalleryItem[] = [
   {
     type: "image",
     thumb:
-      "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_30_1770794561.jpg",
-    full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_30_1770794561.jpg",
-    alt: "Hansen and Kezia portrait six",
+      "/images/gallery_6.jpg",
+    full: "/images/gallery_6.jpg",
+    alt: "Daniel and Listi portrait six",
   },
   {
     type: "image",
     thumb:
       "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_24_1770794542.jpg",
     full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_24_1770794542.jpg",
-    alt: "Hansen and Kezia portrait seven",
+    alt: "Daniel and Listi portrait seven",
   },
   {
     type: "image",
     thumb:
       "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_29_1770794557.jpg",
     full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_29_1770794557.jpg",
-    alt: "Hansen and Kezia portrait eight",
+    alt: "Daniel and Listi portrait eight",
   },
   {
     type: "image",
     thumb:
       "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_7_1770794487.jpg",
     full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_7_1770794487.jpg",
-    alt: "Hansen and Kezia portrait nine",
+    alt: "Daniel and Listi portrait nine",
   },
   {
     type: "image",
     thumb:
       "https://envelope.id/cdn-cgi/image/height=300,fit=scale-down,format=auto/https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_6_1770794482.jpg",
     full: "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_6_1770794482.jpg",
-    alt: "Hansen and Kezia portrait ten",
+    alt: "Daniel and Listi portrait ten",
   },
 ];
 

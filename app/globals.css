@@ -716,14 +716,15 @@ img {
   min-height: 2.5rem;
   padding: 0.85rem 1.4rem;
   border-radius: 15px;
-  background: #ffffff4f;
+  background: #ffffff00;
   color: var(--foreground);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.74rem;
   font-weight: 700;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
   box-shadow: 1px 1px 5px #fff;
+  animation: shadow-blur 1.5s ease-in-out infinite;
 }
 
 .pill-button.secondary {
@@ -746,6 +747,16 @@ img {
 .mobile-menu-button:active {
   transform: translateY(-1px);
   box-shadow: none;
+}
+
+@keyframes shadow-blur {
+  0% {
+    box-shadow: 1px 1px 5px #fff;
+  }
+
+  100% {
+    box-shadow: 1px 1px 10px #fff;
+  }
 }
 
 .event-grid {

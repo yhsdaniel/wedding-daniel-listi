@@ -76,7 +76,7 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                                 }}
                             >
                                 <Mail className="w-4 h-4 mr-2" />
-                                OPEN INVITATION
+                                BUKA UNDANGAN
                             </button>
                         </div>
                     </div>
