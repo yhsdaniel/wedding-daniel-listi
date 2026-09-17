@@ -22,7 +22,7 @@ export const groomImage =
 export const brideImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/bride.jpg";
 export const giftImage =
-  "/images/wedding-gift.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/wedding-gift.jpg";
 export const closingImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/penutup.jpg";
 export const backgroundVideo =
