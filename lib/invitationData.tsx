@@ -16,7 +16,7 @@ export const heroImage =
 export const coverImage = "/images/sampul.jpg"
 export const coverImage2 = "/images/sampul2.jpg"
 export const storyImage =
-  "/images/story.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/story.jpg";
 export const groomImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/groom.jpg";
 export const brideImage =
@@ -24,7 +24,7 @@ export const brideImage =
 export const giftImage =
   "/images/wedding-gift.jpg";
 export const closingImage =
-  "/images/penutup.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/penutup.jpg";
 export const backgroundVideo =
   "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
 export const framePreview =
