@@ -3,6 +3,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { rionaldoFont } from "@/app/fonts";
+import { ImageLoaderProps } from "next/image";
+
+const cloudinaryLoader = ({ src, width, quality }: ImageLoaderProps) => {
+  if (src.includes('res.cloudinary.com')) {
+    const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`];
+    return src.replace('/upload/', `/upload/${params.join(',')}/`);
+  }
+  return src;
+};
 
 type GallerySectionProps = {
   topGallery: ImageGalleryItem[];
@@ -60,11 +69,12 @@ export default function GallerySection({
                   onClick={() => onOpenLightbox(item)}
                 >
                   <Image
-                    src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
+                    src={item.type === "video" ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
                     alt={"Gallery image"}
                     style={{ objectFit: "cover" }}
                     width={300}
                     height={200}
+                    loader={item.type === "image" && item.thumb.includes('res.cloudinary.com') ? cloudinaryLoader : undefined}
                   />
                 </button>
               );
@@ -102,11 +112,12 @@ export default function GallerySection({
                   onClick={() => onOpenLightbox(item)}
                 >
                   <Image
-                    src={isVideo ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
+                    src={item.type === "video" ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
                     alt={item.alt || "Gallery image"}
                     style={{ objectFit: "cover" }}
                     width={300}
                     height={200}
+                    loader={item.type === "image" && item.thumb.includes('res.cloudinary.com') ? cloudinaryLoader : undefined}
                   />
 
                   {/* Overlay Tombol Play Video */}
