@@ -328,7 +328,7 @@ export default function Home() {
               muted
               loop
               playsInline
-              poster={heroImage}
+              // poster={heroImage}
               className="background-video"
             >
               <source src={backgroundVideo} type="video/mp4" />

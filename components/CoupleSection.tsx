@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { motion } from "framer-motion";
 import { groomImage, brideImage } from '@/lib/invitationData';
+import Image from 'next/image';
 
 
 type OpeningHeadingProps = {
@@ -29,8 +30,20 @@ export default function CoupleSection() {
             <section id="couple-groom" data-section className="snap-section">
                 <article
                     className="relative h-screen w-full overflow-hidden bg-cover bg-center"
-                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%), url(${groomImage})` }}
+                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%)` }}
                 >
+                    <Image
+                        src={groomImage}
+                        alt="background cover"
+                        fill
+                        style={{
+                            objectFit: 'cover',
+                            zIndex: -1,
+                        }}
+                        priority
+                        sizes='(max-width: 768px) 100vw, 800px'
+                        unoptimized
+                    />
                     <div className="person-vertical-label">
                         THE GROOM
                     </div>
@@ -90,8 +103,20 @@ export default function CoupleSection() {
             <section id="couple-bride" data-section className="snap-section">
                 <article
                     className="relative h-screen w-full overflow-hidden bg-cover bg-center"
-                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%), url(${brideImage})` }}
+                    style={{ backgroundImage: `linear-gradient(180deg, #00000000 0%, #000000CC 100%)` }}
                 >
+                    <Image
+                        src={brideImage}
+                        alt="background cover"
+                        fill
+                        style={{
+                            objectFit: 'cover',
+                            zIndex: -1,
+                        }}
+                        priority
+                        sizes='(max-width: 768px) 100vw, 800px'
+                        unoptimized
+                    />
                     <div className="person-vertical-label">
                         THE BRIDE
                     </div>

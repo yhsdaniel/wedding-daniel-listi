@@ -65,36 +65,36 @@ export const topGallery: ImageGalleryItem[] = [
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_1.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_1.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_1.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_1.jpg",
     alt: "Daniel and Listi portrait one",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_2.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_2.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_2.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_2.jpg",
     alt: "Daniel and Listi portrait two",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_3.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_3.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_3.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_3.jpg",
     alt: "Daniel and Listi portrait three",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_4.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_4.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_4.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_4.jpg",
     alt: "Daniel and Listi portrait four",
   },
   // {
   //   type: "image",
   //   thumb:
-  //     "https://res.cloudinary.com/q1kpnykw/image/upload/v1789628292/gallery_5.jpg",
-  //   full: "https://res.cloudinary.com/q1kpnykw/image/upload/v1789628292/gallery_5.jpg",
+  //     "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/v1789628292/gallery_5.jpg",
+  //   full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/v1789628292/gallery_5.jpg",
   //   alt: "Daniel and Listi portrait five",
   // },
 ];
@@ -108,36 +108,36 @@ export const bottomGallery: GalleryItem[] = [
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_6.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_6.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_6.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_6.jpg",
     alt: "Daniel and Listi portrait six",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_7.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_7.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_7.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_7.jpg",
     alt: "Daniel and Listi portrait seven",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_8.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_8.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_8.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_8.jpg",
     alt: "Daniel and Listi portrait eight",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_9.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_9.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_9.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_9.jpg",
     alt: "Daniel and Listi portrait nine",
   },
   {
     type: "image",
     thumb:
-      "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_10.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_10.jpg",
+      "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_10.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_10.jpg",
     alt: "Daniel and Listi portrait ten",
   },
 ];
