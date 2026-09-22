@@ -9,33 +9,33 @@ import {
 
 export const targetDate = new Date("2027-01-30T12:00:00+02:00");
 
-export const heroImage =
-  "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
+// export const heroImage =
+//   "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
 // export const coverImage =
 //   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
-export const coverImage = "https://res.cloudinary.com/q1kpnykw/image/upload/sampul.jpg"
-export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/sampul2.jpg"
+export const coverImage = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul.jpg"
+export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul2.jpg"
 export const storyImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/story.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/story.jpg";
 export const groomImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/groom.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/groom.jpg";
 export const brideImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/bride.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/bride.jpg";
 export const giftImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/wedding-gift.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/wedding-gift.jpg";
 export const closingImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/penutup.jpg";
-export const backgroundVideo =
-  "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
-export const framePreview =
-  "https://s3.envelope.id/wp/uploads/2026/02/frame-sample-1.webp";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/penutup.jpg";
+// export const backgroundVideo =
+//   "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
+export const backgroundPage =
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/background.jpg"
+// export const framePreview =
+//   "https://s3.envelope.id/wp/uploads/2026/02/frame-sample-1.webp";
 export const playIcon =
   "https://s3.envelope.id/wp/uploads/2026/02/play-circle-thin-white.svg";
 export const copyIcon = "https://s3.envelope.id/wp/uploads/2026/02/copy-white.svg";
 export const giftIcon = "https://s3.envelope.id/wp/uploads/2026/02/gift-icon-white.svg";
 export const bcaLogo = "https://wp.envelope.id/wp-content/uploads/2024/02/bca.png";
-export const mandiriLogo =
-  "https://wp.envelope.id/wp-content/uploads/2024/02/mandiri.png";
 
 export const menuItems: MenuItem[] = [
   { id: "home", label: "Home" },

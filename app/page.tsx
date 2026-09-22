@@ -6,15 +6,14 @@ import { GalleryItem, Wish } from "@/app/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { Mail, Pause, Play } from "lucide-react";
 import {
-  backgroundVideo,
+  // backgroundVideo,
+  backgroundPage,
   calendarUrl,
   copyIcon,
   coverImage,
   dresscodeColors,
   events,
-  framePreview,
   giftImage,
-  heroImage,
   menuItems,
   playIcon,
   topGallery,
@@ -43,6 +42,7 @@ import Preloader from "@/components/Preloader";
 import LastSection from "@/components/LastSection";
 import Cover from "@/components/Cover";
 import FirstSection from "@/components/FirstSection";
+import Image from "next/image";
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: '400' });
 
@@ -323,7 +323,13 @@ export default function Home() {
         <main className="content-column relative flex-1">
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
           <div className="elixir-background xl:w-4/12" style={{ marginLeft: 'auto' }} aria-hidden="true">
-            <video
+            <Image
+              src={backgroundPage}
+              alt="Hero Background"
+              fill
+              className="background-video"
+            />
+            {/* <video
               autoPlay
               muted
               loop
@@ -332,7 +338,7 @@ export default function Home() {
               className="background-video"
             >
               <source src={backgroundVideo} type="video/mp4" />
-            </video>
+            </video> */}
             <div className="background-overlay" />
           </div>
 
@@ -348,8 +354,6 @@ export default function Home() {
 
           <EventDetailsSection
             events={events}
-            dresscodeColors={dresscodeColors}
-            framePreview={framePreview}
           />
 
           <RsvpSection

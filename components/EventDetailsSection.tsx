@@ -6,8 +6,6 @@ import SectionHeader from "@/components/SectionHeader";
 
 type EventDetailsProps = {
   events: EventCard[];
-  dresscodeColors: string[];
-  framePreview: string;
 };
 
 const fadeUp = {
