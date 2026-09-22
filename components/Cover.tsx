@@ -4,6 +4,7 @@ import { Mail } from 'lucide-react';
 import { motion } from "framer-motion";
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 type CoverProps = {
     invitationOpen: boolean;
@@ -26,18 +27,20 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                     transition={{ duration: 0.75, ease: "easeInOut" }}
                     className="fixed inset-0 size-full z-[100] bg-black overflow-hidden"
                 >
-                    <Image
-                        src="https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul.jpg"
-                        alt="background cover"
-                        fill
-                        style={{
-                            objectFit: 'cover',
-                            zIndex: -1
-                        }}
-                        priority
-                        sizes='(max-width: 768px) 100vw, 800px'
-                        unoptimized
-                    />
+                    <Suspense fallback={<div className="fixed inset-0 size-full z-[100] bg-black" />}>
+                        <Image
+                            src={coverImage}
+                            alt="background cover"
+                            fill
+                            style={{
+                                objectFit: 'cover',
+                                zIndex: -1
+                            }}
+                            priority
+                            sizes='(max-width: 768px) 100vw, 800px'
+                            unoptimized
+                        />
+                    </Suspense>
                     <div
                         className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
                     // style={{
