@@ -1,7 +1,38 @@
+'use client'
+
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 export default function LoveStorySection({ storyImage }: { storyImage: string }) {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollRef.current) return;
+        setIsDragging(true);
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+        setScrollLeft(scrollRef.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollRef.current.scrollLeft = scrollLeft - walk;
+    };
+
     return (
         <section id="story" data-section className="snap-section">
             <div className="content-card story-card">
@@ -14,7 +45,7 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                     <Image
                         src={storyImage}
                         alt="Story portrait"
-                        className="story-image md:w-8/12 object-cover object-center"
+                        className="story-image md:w-8/12 object-cover object-center rounded-xl"
                         width={250}
                         height={100}
                     />
@@ -40,7 +71,15 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                         viewport={{ once: false, amount: 0.25 }}
                         transition={{ duration: 0.75, delay: 0.6 }}
                         className="story-chapters-scroll-wrapper">
-                        <div className="story-chapters-track">
+                        <div 
+                            className="story-chapters-track"
+                            ref={scrollRef}
+                            onMouseDown={handleMouseDown}
+                            onMouseLeave={handleMouseLeave}
+                            onMouseUp={handleMouseUp}
+                            onMouseMove={handleMouseMove}
+                            style={{ cursor: isDragging ? 'grabbing' : 'grab', userSelect: 'none' }}
+                        >
                             <div className="story-chapter reanimate up delay-3">
                                 {/* <p className="belgantFont text-white text-xl my-2 font-bold">The Beginning</p>
                                 <p className="section-copy text-white text-sm">

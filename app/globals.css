@@ -530,7 +530,7 @@ img {
   top: 25%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left top;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(0, 0, 0);
   letter-spacing: 0.28em;
   text-transform: uppercase;
   font-size: 1rem;
@@ -830,6 +830,7 @@ img {
   display: inline-flex;
   margin-right: 10px;
   flex-shrink: 0;
+  position: relative;
 }
 
 .gallery-pill-item img {
@@ -1214,7 +1215,7 @@ img {
 
 .video-item::after {
   content: "";
-  position: absolute;
+  /* position: absolute; */
   inset: 0;
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.45));
 }

@@ -44,7 +44,7 @@ export default function CoupleSection() {
                         sizes='(max-width: 768px) 100vw, 800px'
                         unoptimized
                     />
-                    <div className="person-vertical-label">
+                    <div className="person-vertical-label text-black/80">
                         THE GROOM
                     </div>
                     <div className="person-banner">
@@ -111,6 +111,7 @@ export default function CoupleSection() {
                         fill
                         style={{
                             objectFit: 'cover',
+                            backgroundPosition: 'center',
                             zIndex: -1,
                         }}
                         priority
