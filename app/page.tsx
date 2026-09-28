@@ -276,8 +276,29 @@ export default function Home() {
   };
 
   const toggleGiftOpen = () => setGiftOpen((s) => !s);
-  const openLightbox = (item: GalleryItem) => setLightbox(item);
-  const closeLightbox = () => setLightbox(null);
+
+  const openLightbox = (item: GalleryItem) => {
+    setLightbox(item);
+    window.history.pushState({ lightbox: true }, "", "#lightbox");
+  };
+
+  const closeLightbox = useCallback(() => {
+    setLightbox((prev) => {
+      if (prev !== null && window.location.hash === "#lightbox") {
+        window.history.back();
+      }
+      return null;
+    });
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setLightbox(null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 

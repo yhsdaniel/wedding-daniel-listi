@@ -27,11 +27,18 @@ const fadeUp = {
 };
 
 const SkeletonWish = () => (
-  <article className="wish-item animate-pulse opacity-50">
-    <div>
-      <div style={{ height: "1.2rem", width: "30%", backgroundColor: "rgba(255, 255, 255, 0.15)", borderRadius: "4px", marginBottom: "0.5rem" }} />
+  <article className="wish-item animate-pulse relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md">
+    <div className="flex items-center gap-4 mb-3">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 bg-white/10"></div>
+      <div className="flex-1">
+        <div className="h-4 w-32 bg-white/15 rounded-md"></div>
+        <div className="h-[1px] w-12 bg-white/10 mt-2"></div>
+      </div>
     </div>
-    <div style={{ height: "1rem", width: "80%", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "4px" }} />
+    <div className="pl-16 space-y-2">
+      <div className="h-3 w-full bg-white/10 rounded-md"></div>
+      <div className="h-3 w-4/5 bg-white/10 rounded-md"></div>
+    </div>
   </article>
 );
 
@@ -82,8 +89,19 @@ export default function RsvpSection({
 
     for (const wish of wishes) {
       const article = document.createElement("article");
-      article.className = "wish-item";
-      article.innerHTML = `<div><p class="wish-name">${wish.name}</p></div><p class="wish-message">${wish.message}</p>`;
+      article.className = "wish-item relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md";
+      article.innerHTML = `
+        <div class="flex items-center gap-4 mb-3">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+            <span class="font-serif text-xl text-white/90">${wish.name.charAt(0).toUpperCase()}</span>
+          </div>
+          <div class="flex-1">
+            <p class="wish-name text-base font-medium text-white tracking-wide">${wish.name}</p>
+            <div class="h-[1px] w-12 bg-white/20 mt-1"></div>
+          </div>
+        </div>
+        <p class="wish-message text-[0.95rem] text-white/80 leading-relaxed font-light pl-16">${wish.message}</p>
+      `;
 
       measureContainer.appendChild(article);
       const height = article.offsetHeight;
@@ -134,6 +152,7 @@ export default function RsvpSection({
                 value={guestName}
                 onChange={(event) => onNameChange(event.target.value)}
                 placeholder="Guest Name"
+                style={{ height: '2.5rem' }}
               />
             </label>
 
@@ -186,27 +205,42 @@ export default function RsvpSection({
       </section>
 
       <section id="wishes" data-section className="snap-section" style={{ alignItems: "start" }}>
-        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card" ref={containerRef} style={{ position: "relative" }}>
+        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card h-full" ref={containerRef} style={{ position: "relative" }}>
           <div className="section-header">
             <p className="card-eyebrow">WISHES</p>
             <div className="divider" />
           </div>
 
           {isLoading ? (
-            <div className="wishes-list max-h-[500px] overflow-y-auto">
-              {[...Array(5)].map((_, i) => (
+            <div className="wishes-list max-h-[600px] overflow-y-auto pr-2 flex flex-col gap-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+              {[...Array(4)].map((_, i) => (
                 <SkeletonWish key={i} />
               ))}
             </div>
           ) : wishes.length ? (
-            <div className="wishes-list max-h-[500px] overflow-y-auto">
+            <div className="wishes-list max-h-[600px] overflow-y-auto pr-2 flex flex-col gap-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
               {currentWishes.map((wish, index) => (
-                <article key={`${wish.name}-${index}`} className="wish-item">
-                  <div>
-                    <p className="wish-name">{wish.name}</p>
+                <motion.article
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3, ease: "easeOut" }}
+                  key={`${wish.name}-${index}`}
+                  className="wish-item relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md group hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-white/20 group-hover:bg-white/40 transition-colors duration-300" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                      <span className="font-serif text-xl text-white/90">{wish.name.charAt(0).toUpperCase()}</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="wish-name text-base font-medium text-white tracking-wide">{wish.name}</p>
+                      <div className="h-[1px] w-12 bg-white/20 mt-1" />
+                    </div>
                   </div>
-                  <p className="wish-message">{wish.message}</p>
-                </article>
+                  <p className="wish-message text-[0.95rem] text-white/80 leading-relaxed font-light pl-16">
+                    {wish.message}
+                  </p>
+                </motion.article>
               ))}
             </div>
           ) : (
