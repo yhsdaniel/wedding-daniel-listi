@@ -277,22 +277,29 @@ export default function Home() {
 
   const toggleGiftOpen = () => setGiftOpen((s) => !s);
 
+  const lightboxHistoryRef = useRef(false);
+
   const openLightbox = (item: GalleryItem) => {
     setLightbox(item);
     window.history.pushState({ lightbox: true }, "", "#lightbox");
+    lightboxHistoryRef.current = true;
   };
 
   const closeLightbox = useCallback(() => {
-    setLightbox((prev) => {
-      if (prev !== null && window.location.hash === "#lightbox") {
-        window.history.back();
-      }
-      return null;
-    });
+    if (lightboxHistoryRef.current) {
+      // We pushed a history entry — go back so the popstate handler will close it
+      lightboxHistoryRef.current = false;
+      window.history.back();
+    } else {
+      // Already handled by popstate (e.g. browser back) — just close
+      setLightbox(null);
+    }
   }, []);
 
   useEffect(() => {
     const handlePopState = () => {
+      // Browser back was pressed; history already went back, just close
+      lightboxHistoryRef.current = false;
       setLightbox(null);
     };
 

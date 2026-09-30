@@ -102,7 +102,7 @@ export const topGallery: ImageGalleryItem[] = [
 export const bottomGallery: GalleryItem[] = [
   {
     type: "video",
-    videoId: "FpJVl_iHvHk",
+    videoId: "x8R7alOa2Hw",
     alt: "Prewedding video",
   },
   {
