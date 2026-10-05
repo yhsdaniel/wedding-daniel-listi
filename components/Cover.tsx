@@ -27,16 +27,14 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                     transition={{ duration: 0.75, ease: "easeInOut" }}
                     className="fixed inset-0 size-full z-[100] bg-black overflow-hidden"
                 >
-                    <Suspense fallback={<div className="bg-black/80 w-full h-full"></div>}>
-                        <Image
-                            src={coverImage}
-                            alt="background cover"
-                            fill
-                            priority
-                            sizes='100vw'
-                            className='absolute inset-0 -z-10 object-cover'
-                        />
-                    </Suspense>
+                    <Image
+                        src={coverImage}
+                        alt="background cover"
+                        fill
+                        priority
+                        sizes='100vw'
+                        className='absolute inset-0 -z-10 object-cover'
+                    />
                     <div
                         className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
                     // style={{

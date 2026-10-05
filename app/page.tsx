@@ -328,14 +328,14 @@ export default function Home() {
 
   return (
     <>
-      <AnimatePresence>
+      <Suspense fallback={<div className="bg-black/80 w-full h-full"></div>}>
         <Cover
           invitationOpen={invitationOpen}
           setInvitationOpen={setInvitationOpen}
           audioRef={audioRef}
           setIsVisible={setIsVisible}
         />
-      </AnimatePresence>
+      </Suspense>
 
       <div className={`elixir-shell flex transition-opacity duration-500 ${!invitationOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         {/* Add audio */}
