@@ -1,5 +1,3 @@
-'use client'
-
 import {
   EventCard,
   GalleryItem,
@@ -13,8 +11,8 @@ export const targetDate = new Date("2027-01-30T12:00:00+02:00");
 //   "https://s3.envelope.id/wp/uploads/2026/02/hansenkezia_28_1770794555.jpg";
 // export const coverImage =
 //   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
-export const coverImage = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul.jpg"
-export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul2.jpg"
+export const coverImage = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_1200/sampul.jpg"
+export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_1200/sampul2.jpg"
 export const storyImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/story.jpg";
 export const groomImage =

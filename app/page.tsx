@@ -88,6 +88,9 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoadingWishes, setIsLoadingWishes] = useState(false);
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
   const fetchWishes = useCallback(async () => {
     setIsLoadingWishes(true);
 
@@ -281,6 +284,10 @@ export default function Home() {
 
   const openLightbox = (item: GalleryItem) => {
     setLightbox(item);
+    if (item.type === "video") {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    }
     window.history.pushState({ lightbox: true }, "", "#lightbox");
     lightboxHistoryRef.current = true;
   };
@@ -306,8 +313,6 @@ export default function Home() {
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   const toggleAudio = async () => {
     if (!audioRef.current) return;
@@ -323,15 +328,16 @@ export default function Home() {
 
   return (
     <>
-      <div className="elixir-shell flex">
-        {/* <HeroRail
-          heroImage={heroImage}
-          menuItems={menuItems}
-          activeSection={activeSection}
-          mobileMenuOpen={mobileMenuOpen}
-          onNavigate={scrollToSection}
-          onToggleMobileMenu={() => setMobileMenuOpen((s) => !s)}
-        /> */}
+      <AnimatePresence>
+        <Cover
+          invitationOpen={invitationOpen}
+          setInvitationOpen={setInvitationOpen}
+          audioRef={audioRef}
+          setIsVisible={setIsVisible}
+        />
+      </AnimatePresence>
+
+      <div className={`elixir-shell flex transition-opacity duration-500 ${!invitationOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         {/* Add audio */}
         <audio loop controls ref={audioRef} src={"/Thank God I Found You.mp3"} className="hidden" onEnded={() => setIsPlaying(false)}>
         </audio>
@@ -348,7 +354,7 @@ export default function Home() {
 
         <LeftSideSection />
 
-        <main className="content-column relative flex-1">
+        <main className={`content-column relative flex-1 ${!invitationOpen ? 'hidden' : 'block'}`}>
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
           <div className="elixir-background xl:w-4/12" style={{ marginLeft: 'auto' }} aria-hidden="true">
             <Image
@@ -421,17 +427,6 @@ export default function Home() {
           <LastSection />
         </main>
       </div>
-
-      <AnimatePresence>
-        <Suspense fallback={null}>
-          <Cover
-            invitationOpen={invitationOpen}
-            setInvitationOpen={setInvitationOpen}
-            audioRef={audioRef}
-            setIsVisible={setIsVisible}
-          />
-        </Suspense>
-      </AnimatePresence>
 
       {lightbox ? <Lightbox item={lightbox} onClose={closeLightbox} /> : null}
     </>
