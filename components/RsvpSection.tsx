@@ -227,17 +227,17 @@ export default function RsvpSection({
                   key={`${wish.name}-${index}`}
                   className="wish-item relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md group hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-white/20 group-hover:bg-white/40 transition-colors duration-300" />
+                  <div className="absolute top-0 left-0 w-3 h-full bg-gradient-to-r from-white/40 to-transparent group-hover:bg-black/40 transition-colors duration-300" />
                   <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-black/50 group-hover:scale-110 transition-transform duration-300">
                       <span className="font-serif text-xl text-white/90">{wish.name.charAt(0).toUpperCase()}</span>
                     </div>
                     <div className="flex-1">
-                      <p className="wish-name text-base font-medium text-white tracking-wide">{wish.name}</p>
-                      <div className="h-[1px] w-12 bg-white/20 mt-1" />
+                      <p className="wish-name text-base font-medium text-white tracking-[0.112rem]">{wish.name}</p>
+                      <div className="h-[1px] w-full bg-white/50 mt-3" />
                     </div>
                   </div>
-                  <p className="wish-message text-[0.95rem] text-white/80 leading-relaxed font-light pl-16">
+                  <p className="wish-message text-[1rem] text-white/80 tracking-[0.112rem] font-light pl-16">
                     {wish.message}
                   </p>
                 </motion.article>

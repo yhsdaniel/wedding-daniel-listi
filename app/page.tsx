@@ -354,7 +354,7 @@ export default function Home() {
 
         <LeftSideSection />
 
-        <main className={`content-column relative flex-1 ${!invitationOpen ? 'hidden' : 'block'}`}>
+        <main className={`content-column relative flex-1 ${!invitationOpen ? 'invisible' : 'visible'}`}>
           <Preloader isVisible={isVisible} setIsVisible={setIsVisible} />
           <div className="elixir-background xl:w-4/12" style={{ marginLeft: 'auto' }} aria-hidden="true">
             <Image

@@ -601,7 +601,6 @@ img {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  /* Firefox */
   gap: 0;
 }
 
@@ -628,7 +627,18 @@ img {
   gap: 0.5rem;
   margin-top: 1rem;
   padding-right: 2rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.story-scroll-hint-left {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-right: 2rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
@@ -864,7 +874,6 @@ img {
 }
 
 .dresscode-card,
-.gift-card,
 .closing-card {
   margin-top: 1.5rem;
 }
@@ -1147,7 +1156,6 @@ img {
 
 .wish-message {
   color: #fff;
-  margin-top: 0.5rem;
   font-size: .7rem;
 }
 
@@ -1238,6 +1246,7 @@ img {
 
 .gift-card {
   text-align: center;
+  padding-top: 0;
 }
 
 .gift-visual {
@@ -1251,7 +1260,7 @@ img {
 }
 
 .wedding-gift {
-  width: min(100%, 12rem);
+  width: min(100%, 10rem);
   aspect-ratio: 1;
   border-radius: 1.5rem;
   border: 1px solid var(--line);
@@ -1261,7 +1270,7 @@ img {
 
 .gift-panel {
   width: min(100%, 9rem);
-  margin: 1.5rem auto 0;
+  /* margin: 1.5rem auto 0; */
   overflow: hidden;
   transition:
     width 0.65s ease,
@@ -1321,52 +1330,199 @@ img {
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: 1.2rem;
-  background: rgba(255, 255, 255, 0.04);
+  background-color: #fff;
   text-align: left;
 }
 
-.gift-icon-wrap {
+/* Bank BCA ATM Card Styles (Replicating Yuki & Robert reference design) */
+.bca-atm-card {
+  position: relative;
+  /* background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); */
+  /* background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 50%, #e2e8f0 100%);
+  background-attachment: fixed; */
+  background-image: url('/images/bg-shiny.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 14px 35px -6px rgba(0, 0, 0, 0.15), 0 4px 14px -2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+.bca-atm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.18), 0 6px 16px -2px rgba(0, 0, 0, 0.08);
+}
+
+.bca-card-sheen {
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 91, 170, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.bca-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bca-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.bca-logo-img {
+  height: 1rem;
+  width: auto;
+  max-width: 5.5rem;
+  object-fit: contain;
+}
+
+.bca-emv-chip {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #f5e49c 0%, #d4af37 45%, #f9eab2 65%, #aa8012 100%);
+  border: 1px solid #ad8318;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.65), 0 1px 2px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bca-chip-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(122, 85, 9, 0.7);
+}
+
+.bca-chip-line-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(122, 85, 9, 0.7);
+  transform: translateY(-50%);
+}
+
+.bca-chip-line-v1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(122, 85, 9, 0.7);
+  transform: translateX(-50%);
+}
+
+.bca-chip-line-v2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(122, 85, 9, 0.7);
+  transform: translateX(-50%);
+}
+
+.bca-card-body {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bca-account-number {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a202c !important;
+  letter-spacing: 0.18em;
+  line-height: 1.25;
+  margin: 0 !important;
+  user-select: all;
+}
+
+.bca-holder-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a5568 !important;
+  margin: 0.45rem 0 0 0 !important;
+  letter-spacing: 0.02em;
+}
+
+.bca-copy-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: #6e816a;
+  color: #ffffff !important;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 255, 255);
-  flex: 0 0 auto;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(110, 129, 106, 0.35);
 }
 
-.bank-logo {
-  width: 2.3rem;
+.bca-copy-btn:hover {
+  background-color: #5c6f58;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(110, 129, 106, 0.4);
 }
 
-.gift-logo {
-  width: 1.4rem;
+.bca-copy-btn:active {
+  transform: translateY(0);
 }
 
-.gift-body {
-  display: grid;
-  gap: 0.4rem;
-  min-width: 0;
+.bca-copy-btn.is-copied {
+  background-color: #3b7a57;
+  box-shadow: 0 3px 8px rgba(59, 122, 87, 0.35);
 }
 
-.gift-option h3 {
-  color: var(--foreground);
-  font-size: 1rem;
-}
+@media (max-width: 400px) {
+  .bca-atm-card {
+    width: 85%;
+  }
 
-.icon-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  margin-left: auto;
-  flex: 0 0 auto;
-}
+  .bca-emv-chip {
+    width: 25px;
+    height: 15px;
+  }
 
-.icon-button img {
-  width: 1rem;
+  .bca-account-number,
+  .bca-holder-name {
+    font-size: 0.8rem;
+  }
 }
 
 .closing-names {
