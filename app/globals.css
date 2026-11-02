@@ -1954,7 +1954,7 @@ img {
   padding: 0.5rem 1.25rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.2);
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 700;

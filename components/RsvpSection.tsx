@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { Wish } from "@/app/types";
 import SectionHeader from "@/components/SectionHeader";
@@ -14,9 +14,9 @@ type RsvpProps = {
   onGuestCountChange: (delta: number) => void;
   onWishesTextChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  currentPage?: number;
+  totalPages?: number;
+  onPageChange?: (page: number) => void;
   isLoading: boolean;
 };
 
@@ -26,13 +26,15 @@ const fadeUp = {
   viewport: { once: true, amount: 0.24 },
 };
 
+const WISHES_PER_PAGE = 3;
+
 const SkeletonWish = () => (
   <article className="wish-item animate-pulse relative overflow-hidden rounded-2xl bg-linear-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md">
     <div className="flex items-center gap-4 mb-3">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 bg-white/10"></div>
+      <div className="shrink-0 w-12 h-12 rounded-full border border-white/20 bg-white/10"></div>
       <div className="flex-1">
         <div className="h-4 w-32 bg-white/15 rounded-md"></div>
-        <div className="h-[1px] w-12 bg-white/10 mt-2"></div>
+        <div className="h-px w-12 bg-white/10 mt-2"></div>
       </div>
     </div>
     <div className="pl-16 space-y-2">
@@ -54,90 +56,26 @@ export default function RsvpSection({
   onWishesTextChange,
   onSubmit,
   currentPage,
-  totalPages,
   onPageChange,
   isLoading,
 }: RsvpProps) {
-  const [paginatedWishes, setPaginatedWishes] = useState<Wish[][]>([]);
   const [localPage, setLocalPage] = useState(1);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!wishes || wishes.length === 0) {
-      setPaginatedWishes([]);
-      return;
-    }
+  const totalLocalPages = Math.max(1, Math.ceil((wishes?.length || 0) / WISHES_PER_PAGE));
+  const activePage = Math.min(currentPage || localPage, totalLocalPages);
 
-    const container = containerRef.current;
-    if (!container) return;
+  const handlePageChange = (newPage: number) => {
+    setLocalPage(newPage);
+    onPageChange?.(newPage);
+  };
 
-    const measureContainer = document.createElement("div");
-    measureContainer.className = "wishes-list";
-    measureContainer.style.position = "absolute";
-    measureContainer.style.visibility = "hidden";
-    measureContainer.style.pointerEvents = "none";
-    measureContainer.style.width = "100%";
-    measureContainer.style.top = "0";
-    measureContainer.style.left = "0";
-
-    container.appendChild(measureContainer);
-
-    const pages: Wish[][] = [];
-    let currentPageWishes: Wish[] = [];
-    let currentHeight = 0;
-    const maxHeight = 600; // max height per page in px before moving to next
-
-    for (const wish of wishes) {
-      const article = document.createElement("article");
-      article.className = "wish-item relative overflow-hidden rounded-2xl bg-linear-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md";
-      article.innerHTML = `
-        <div class="flex items-center gap-4 mb-3">
-          <div class="shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
-            <span class="font-serif text-xl text-white/90">${wish.name.charAt(0).toUpperCase()}</span>
-          </div>
-          <div class="flex-1">
-            <p class="wish-name text-base font-medium text-white tracking-wide">${wish.name}</p>
-            <div class="h-px w-12 bg-white/20 mt-1"></div>
-          </div>
-        </div>
-        <p class="wish-message text-[0.95rem] text-white/80 leading-relaxed font-light pl-16">${wish.message}</p>
-      `;
-
-      measureContainer.appendChild(article);
-      const height = article.offsetHeight;
-      const margin = 16; // approximate gap between items
-      measureContainer.removeChild(article);
-
-      if (currentHeight + height + margin > maxHeight && currentPageWishes.length > 0) {
-        pages.push(currentPageWishes);
-        currentPageWishes = [wish];
-        currentHeight = height;
-      } else {
-        currentPageWishes.push(wish);
-        currentHeight += height + margin;
-      }
-    }
-
-    if (currentPageWishes.length > 0) {
-      pages.push(currentPageWishes);
-    }
-
-    container.removeChild(measureContainer);
-    setPaginatedWishes(pages);
-
-    setLocalPage(prev => {
-      if (prev > pages.length) return Math.max(1, pages.length);
-      return prev;
-    });
-  }, [wishes]);
-
-  const currentWishes = paginatedWishes[localPage - 1] || [];
-  const totalLocalPages = Math.max(1, paginatedWishes.length);
+  const startIndex = (activePage - 1) * WISHES_PER_PAGE;
+  const currentWishes = (wishes || []).slice(startIndex, startIndex + WISHES_PER_PAGE);
 
   return (
     <>
       <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start", paddingTop: "2rem" }}>
-        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card">
+        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card h-screen">
           <SectionHeader eyebrow="RSVP" />
           <h2 className="section-heading" style={{ margin: "1rem 0", fontSize: "2rem" }}>WILL YOU ATTEND?</h2>
           <p className="section-copy mt-4" style={{ fontSize: "0.8rem" }}>
@@ -205,20 +143,20 @@ export default function RsvpSection({
       </section>
 
       <section id="wishes" data-section className="snap-section" style={{ alignItems: "start" }}>
-        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card-rsvp-section wishes-card h-full" ref={containerRef}>
+        <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card">
           <div className="section-header">
             <p className="card-eyebrow">WISHES</p>
             <div className="divider" />
           </div>
 
           {isLoading ? (
-            <div className="wishes-list h-max overflow-y-auto pr-2 flex flex-col gap-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
-              {[...Array(4)].map((_, i) => (
+            <div className="wishes-list h-auto flex flex-col gap-4">
+              {[...Array(WISHES_PER_PAGE)].map((_, i) => (
                 <SkeletonWish key={i} />
               ))}
             </div>
           ) : wishes.length ? (
-            <div className="wishes-list h-max overflow-y-auto pr-2 flex flex-col gap-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+            <div className="wishes-list h-auto flex flex-col gap-4">
               {currentWishes.map((wish, index) => (
                 <motion.article
                   initial={{ opacity: 0, x: -5 }}
@@ -254,19 +192,19 @@ export default function RsvpSection({
               <button
                 type="button"
                 className="pagination-btn"
-                disabled={localPage === 1}
-                onClick={() => setLocalPage(localPage - 1)}
+                disabled={activePage === 1}
+                onClick={() => handlePageChange(activePage - 1)}
               >
                 PREV
               </button>
               <span className="text-sm font-semibold text-white/75">
-                {localPage} / {totalLocalPages}
+                {activePage} / {totalLocalPages}
               </span>
               <button
                 type="button"
                 className="pagination-btn"
-                disabled={localPage === totalLocalPages}
-                onClick={() => setLocalPage(localPage + 1)}
+                disabled={activePage === totalLocalPages}
+                onClick={() => handlePageChange(activePage + 1)}
               >
                 NEXT
               </button>
