@@ -1,5 +1,5 @@
 import { belgantFont } from '@/app/fonts';
-import { coverImage } from '@/lib/invitationData';
+import { coverImage, coverImageDesktop } from '@/lib/invitationData';
 import { Mail } from 'lucide-react';
 import { motion } from "framer-motion";
 import { useSearchParams } from 'next/navigation';
@@ -27,14 +27,22 @@ export default function Cover({ invitationOpen, setInvitationOpen, audioRef, set
                     transition={{ duration: 0.75, ease: "easeInOut" }}
                     className="fixed inset-0 size-full z-[100] bg-black overflow-hidden"
                 >
-                    <Image
-                        src={coverImage}
-                        alt="background cover"
-                        fill
-                        priority
-                        sizes='100vw'
-                        className='absolute inset-0 -z-10 object-cover'
-                    />
+                    <picture>
+                        <source media="(max-width: 768px)" srcSet={coverImage} />
+                        <source media="(min-width: 769px)" srcSet={coverImageDesktop} />
+                        <Image
+                            src={coverImageDesktop}
+                            alt="background cover"
+                            // width={2400}
+                            // height={1400}
+                            fill
+                            fetchPriority='high'
+                            sizes='100vw'
+                            className='absolute inset-0 -z-10 object-cover'
+                            quality={100}
+                            loading='eager'
+                        />
+                    </picture>
                     <div
                         className="cover-media p-6 py-[25%] md:py-20 gap-6 hidden md:block"
                     // style={{

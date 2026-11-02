@@ -131,7 +131,6 @@ export default function GallerySection({
                     <Image
                       src={item.type === "video" ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` : item.thumb}
                       alt={"Gallery image"}
-                      style={{ objectFit: "cover" }}
                       width={300}
                       height={200}
                       loader={item.type === "image" && item.thumb.includes('res.cloudinary.com') ? cloudinaryLoader : undefined}

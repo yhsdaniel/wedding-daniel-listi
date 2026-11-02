@@ -12,13 +12,14 @@ export const targetDate = new Date("2027-01-30T12:00:00+02:00");
 // export const coverImage =
 //   "https://wp.envelope.id/wp-content/uploads/2026/02/inv_787_x1mxpE7V.jpg";
 export const coverImage = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_1200/sampul.jpg"
-export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_1200/sampul2.jpg"
+export const coverImageDesktop = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_2400/c_limit/cover_desktop.jpg"
+export const coverImage2 = "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_2400/c_limit/sampul2.jpg"
 export const storyImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/story.jpg";
 export const groomImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/groom.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/groom.jpg";
 export const brideImage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/bride.jpg";
+  "https://res.cloudinary.com/q1kpnykw/image/upload/bride.jpg";
 export const giftImage =
   "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/wedding-gift.jpg";
 export const closingImage =
@@ -64,28 +65,28 @@ export const topGallery: ImageGalleryItem[] = [
     type: "image",
     thumb:
       "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_1.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_1.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_1.jpg",
     alt: "Daniel and Listi portrait one",
   },
   {
     type: "image",
     thumb:
       "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_2.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_2.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_2.jpg",
     alt: "Daniel and Listi portrait two",
   },
   {
     type: "image",
     thumb:
       "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_3.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_3.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_3.jpg",
     alt: "Daniel and Listi portrait three",
   },
   {
     type: "image",
     thumb:
       "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_4.jpg",
-    full: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/gallery_4.jpg",
+    full: "https://res.cloudinary.com/q1kpnykw/image/upload/gallery_4.jpg",
     alt: "Daniel and Listi portrait four",
   },
   // {

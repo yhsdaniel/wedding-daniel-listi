@@ -15,7 +15,7 @@ export default function Lightbox({ item, onClose }: LightboxProps) {
         {item.type === "video" ? (
           <div className="video-frame">
             <iframe
-              src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&rel=0`}
+              src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&rel=0&vq=hd1080`}
               title="Prewedding video"
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
