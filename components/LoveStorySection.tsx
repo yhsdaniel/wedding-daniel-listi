@@ -65,13 +65,15 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                     viewport={{ once: false, amount: 0.25 }}
                     transition={{ duration: 0.75, delay: 0.2 }}
                     className="flex items-center">
-                    <Image
-                        src={storyImage}
-                        alt="Story portrait"
-                        className="story-image md:w-8/12 object-cover object-center rounded-xl"
-                        width={250}
-                        height={100}
-                    />
+                    <div className='bg-cover bg-center h-37.5 w-3/4' style={{ backgroundImage: `linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.42) 100%)), url(${storyImage})` }}>
+                        {/* <Image
+                            src={storyImage}
+                            alt="Story portrait"
+                            className="story-image md:w-8/12 object-cover object-center rounded-xl"
+                            width={250}
+                            height={100}
+                        /> */}
+                    </div>
                     <h4 className="belgantFont w-6/12 text-3xl md:text-3xl absolute z-30 top-10 right-0">
                         The Path Where Two Hearts Unite
                     </h4>
@@ -153,8 +155,8 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
 
                     </motion.div>
 
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     )
 }

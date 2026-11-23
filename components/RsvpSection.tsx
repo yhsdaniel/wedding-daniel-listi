@@ -74,10 +74,10 @@ export default function RsvpSection({
 
   return (
     <>
-      <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start", paddingTop: "2rem" }}>
+      <section id="rsvp" data-section className="snap-section" style={{ alignItems: "start" }}>
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card h-screen">
           <SectionHeader eyebrow="RSVP" />
-          <h2 className="section-heading" style={{ margin: "1rem 0", fontSize: "2rem" }}>WILL YOU ATTEND?</h2>
+          <h2 className="section-heading" style={{ margin: "1rem 0", fontSize: "1.5rem" }}>WILL YOU ATTEND?</h2>
           <p className="section-copy mt-4" style={{ fontSize: "0.8rem" }}>
             We kindly request your prompt response to confirm your attendance at our
             upcoming event. Alongside your RSVP, please take a moment to extend your
@@ -136,13 +136,13 @@ export default function RsvpSection({
             </label>
 
             <button className="pill-button form-submit" type="submit">
-              SUBMIT
+              SEND
             </button>
           </form>
         </motion.div>
       </section>
 
-      <section id="wishes" data-section className="snap-section" style={{ alignItems: "start" }}>
+      <section id="wishes" data-section className="snap-section" style={{ alignItems: "start", paddingTop: "2rem" }}>
         <motion.div {...fadeUp} transition={{ duration: 0.75 }} className="content-card wishes-card">
           <div className="section-header">
             <p className="card-eyebrow">WISHES</p>
