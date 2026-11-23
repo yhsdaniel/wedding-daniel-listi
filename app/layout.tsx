@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Daniel & Listi Wedding Invitation",
     description: "The wedding invitation of Daniel and Listi.",
-    url: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul2.jpg",
+    url: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/share_link.jpg",
     type: "website",
     images: [
       {
-        url: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/sampul2.jpg",
+        url: "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/share_link.jpg",
         width: 1200,
         height: 630,
         alt: "Daniel & Listi Wedding Invitation",
