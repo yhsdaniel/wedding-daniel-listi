@@ -273,8 +273,8 @@ img {
 }
 
 .snap-section {
-  height: 100dvh;
-  /* margin-top: 2rem; */
+  height: 100vh;
+  margin-top: 2rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
