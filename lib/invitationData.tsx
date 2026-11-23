@@ -27,7 +27,8 @@ export const closingImage =
 // export const backgroundVideo =
 //   "https://s3.envelope.id/templates/prewed-1/hansen-kezia-720.mp4";
 export const backgroundPage =
-  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/background.jpg"
+  // "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/background.jpg"
+  "https://res.cloudinary.com/q1kpnykw/image/upload/f_auto,q_auto,w_800/share_link.jpg"
 // export const framePreview =
 //   "https://s3.envelope.id/wp/uploads/2026/02/frame-sample-1.webp";
 export const playIcon =

@@ -166,16 +166,16 @@ export default function RsvpSection({
                   className="wish-item relative overflow-hidden rounded-2xl bg-linear-to-br from-white/10 to-white/5 p-6 border border-white/10 shadow-lg backdrop-blur-md transition-all duration-300"
                 >
                   <div className="absolute top-0 left-0 w-3 h-full bg-linear-to-r from-white/40 to-transparent transition-colors duration-300" />
-                  <div className="flex items-center gap-4">
-                    <div className="shrink-0 size-10 rounded-full border border-white/20 flex items-center justify-center bg-black/50 transition-transform duration-300">
+                  <div className="flex items-center gap-4 mb-2">
+                    {/* <div className="shrink-0 size-10 rounded-full border border-white/20 flex items-center justify-center bg-black/50 transition-transform duration-300">
                       <span className="text-md text-white/90">{wish.name.charAt(0).toUpperCase()}</span>
-                    </div>
+                    </div> */}
                     <div className="flex-1">
                       <p className="wish-name text-base font-medium text-white tracking-[0.112rem]">{wish.name}</p>
-                      <div className="h-px w-full bg-white/50 mt-3" />
+                      <div className="h-px w-full bg-white/50" />
                     </div>
                   </div>
-                  <p className="wish-message text-[1rem] text-white/80 tracking-[0.112rem] font-light pl-14">
+                  <p className="wish-message text-[1rem] text-white/80 tracking-[0.112rem] font-light">
                     {wish.message}
                   </p>
                 </motion.article>

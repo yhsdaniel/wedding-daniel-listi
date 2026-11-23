@@ -65,7 +65,7 @@ export default function LoveStorySection({ storyImage }: { storyImage: string })
                     viewport={{ once: false, amount: 0.25 }}
                     transition={{ duration: 0.75, delay: 0.2 }}
                     className="flex items-center">
-                    <div className='bg-cover bg-center h-37.5 w-3/4' style={{ backgroundImage: `linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.42) 100%)), url(${storyImage})` }}>
+                    <div className='bg-cover bg-center h-37.5 w-3/4' style={{ backgroundImage: `linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.42) 100%), url(${storyImage})` }}>
                         {/* <Image
                             src={storyImage}
                             alt="Story portrait"
